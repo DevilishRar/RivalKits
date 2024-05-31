@@ -1,0 +1,116 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Raleway:wght@400;700&display=swap" rel="stylesheet">
+    <title>RivalsKit - Providements</title>
+    <style>
+        body {
+            font-family: 'Raleway', sans-serif;
+            min-height: 100vh;
+            background-color: #282b30; /* RGB 40,43,48 */
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .fade-in {
+            animation: fadeIn 1s ease-in-out forwards;
+        }
+        .fade-out {
+            animation: fadeOut 1s ease-in-out forwards;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes fadeOut {
+            from { opacity: 1; }
+            to { opacity: 0; }
+        }
+        .content {
+            padding: 15rem;
+            background-color: #111827;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .card {
+            background-color: #111827;
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, opacity 0.3s;
+            width: 400px; /* Rectangular card */
+            height: 200px; /* Rectangular card */
+            margin: 0.5rem; /* Small margin */
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center; /* Center align cards */
+            gap: 1rem; /* Customizable gap between cards */
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white fade-in">
+    <header class="navbar flex justify-between items-center py-4 px-8 w-full absolute top-0">
+        <div class="flex items-center" style="margin-left: 1.7rem;">
+            <img src="logo.png" alt="RivalsKit logo" class="mr-2 rounded-lg w-10 h-10">
+            <span class="text-xl font-bold text-white">RivalsKit</span>
+        </div>
+        <nav class="hidden md:flex space-x-8">
+            <a href="index.html" class="text-gray-300 hover:text-gray-500">Home</a>
+            <a href="providements.html" class="text-gray-300 hover:text-gray-500">Providements</a>
+            <a href="about.html" class="text-gray-300 hover:text-gray-500">About</a>
+            <a href="https://store.rivalkitsmc.com" class="text-gray-300 hover:text-gray-500">Store</a>
+        </nav>
+        <a href="https://discord.gg/wjd48DDEwk" class="bg-blue-600 text-white px-4 py-2 rounded-full flex items-center space-x-2 hover:bg-blue-700" style="margin-right: 1.6rem;">
+            <i class="fab fa-discord"></i>
+            <span>Join Our Discord</span>
+        </a>
+    </header>
+    <main class="content fade-in">
+        <h1 class="text-5xl font-bold mb-8 text-center">What We Provide.</h1> <!-- Center align main text -->
+        <div class="card-container">
+            <div class="card">
+                <h2 class="text-3xl font-semibold mb-2">1. Random Kits</h2>
+                <p class="text-md">
+                    We provide wide varietys of random kits Experience the best fights.
+                </p>
+            </div>
+            <div class="card">
+                <h2 class="text-3xl font-semibold mb-2">2. Staff</h2>
+                <p class="text-md">
+                    We offer the best staffs at your service.
+                </p>
+            </div>
+            <div class="card">
+                <h2 class="text-3xl font-semibold mb-2">3. Updates</h2>
+                <p class="text-md">
+                    We care about our members and try our hardest to provide them Updates.
+                </p>
+            </div>
+            <!-- Add more services as needed -->
+        </div>
+    </main>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const links = document.querySelectorAll("a");
+            links.forEach(link => {
+                link.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    document.body.classList.add("fade-out");
+                    setTimeout(() => {
+                        window.location.href = link.href;
+                    }, 1000);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
