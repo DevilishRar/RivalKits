@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About RivalKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manrope:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+        :root {
+          --text: hsl(0, 0%, 99%);
+          --textDim: hsl(0, 0%, 60%);
+          --background: hsl(0, 0%, 7%);
+          --primary: hsl(0, 100%, 50%);
+          --primaryBg: hsla(0, 100%, 50%, 1%);
+          --primaryHi: hsla(0, 100%, 60%, 25%);
+          --primaryFg: hsl(0, 100%, 85%);
+          --secondary: hsl(0, 51%, 14%);
+          --secondaryFg: hsl(0, 51%, 75%);
+          --secondaryBg: hsla(0, 51%, 14%, 5%);
+          --secondaryHi: hsla(0, 51%, 30%, 50%);
+          --accent: hsl(0, 100%, 94%);
+          --accentBg: hsla(0, 100%, 94%, 1%);
+          --accentHi: hsla(0, 100%, 100%, 25%);
+        }
+
+        body {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          background-color: var(--background);
+          color: var(--text);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          overflow-x: hidden;
+          position: relative;
+          scroll-behavior: smooth;
+          animation: fadeIn 2s ease-in-out;
+        }
+
+        body::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+          filter: url(#noiseFilter);
+          opacity: 0.1; /* Adjust the opacity for a more subtle effect */
+          z-index: -1;
+        }
+
+        header {
+          width: 100%;
+          padding: 20px 10%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          color: var(--textDim);
+        }
+
+        .menu:hover {
+          color: var(--text);
+          cursor: pointer;
+        }
+
+        .sitename {
+          font-weight: bold;
+        }
+
+        .hero {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 60vh;
+          z-index: 1;
+          position: relative;
+        }
+
+        .hero h1 {
+          font-size: 3rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero p {
+          font-size: 1.25rem;
+          color: var(--textDim);
+          margin-bottom: 2rem;
+        }
+
+        .section {
+          padding: 5rem 10%;
+          text-align: center;
+          border-radius: 15px;
+          background-color: var(--secondaryBg);
+          margin: 2rem 0;
+          z-index: 1;
+        }
+
+        .card {
+          background-color: var(--primaryBg);
+          box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+          color: var(--primaryFg);
+          border-radius: 15px;
+          padding: 1rem 2rem;
+          margin: 1rem;
+          width: 300px;
+          position: relative;
+          display: inline-block;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card span {
+          width: 100px;
+          height: 60px;
+          background-color: var(--primaryHi);
+          border-radius: 100%;
+          filter: blur(20px);
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: all 0.2s ease;
+        }
+
+        .card:hover span {
+          opacity: 60%;
+        }
+
+        .card:hover {
+          transform: translateY(5px);
+          box-shadow: 0px 0px 20px var(--primaryHi);
+        }
+
+        .cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 2rem;
+        }
+
+        .glow {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(100px);
+          opacity: 0.7;
+        }
+
+        .glow1 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--primary);
+          top: 20%;
+          left: 10%;
+        }
+
+        .glow2 {
+          width: 300px;
+          height: 300px;
+          background-color: var(--secondary);
+          top: 50%;
+          right: 10%;
+        }
+
+        .glow3 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--accent);
+          bottom: 10%;
+          left: 40%;
+        }
+
+        .glow4 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--primary);
+          top: 70%;
+          right: 30%;
+        }
+
+        .glow5 {
+          width: 350px;
+          height: 350px;
+          background-color: var(--secondary);
+          top: 20%;
+          left: 30%;
+        }
+
+        .glow6 {
+          width: 100px;
+          height: 100px;
+          background-color: var(--accent);
+          bottom: 20%;
+          right: 40%;
+        }
+
+        .glow7 {
+          width: 400px;
+          height: 200px;
+          background-color: var(--primary);
+          top: 30%;
+          left: 50%;
+          transform: translateX(-50%);
+          filter: blur(100px);
+        }
+
+        .showcase {
+          padding: 5rem 10%;
+          text-align: center;
+          border-radius: 15px;
+          background-color: var(--secondaryBg);
+          margin: 2rem 0;
+          z-index: 1;
+        }
+
+        .showcase img, .showcase video, .showcase iframe {
+          width: 300px;
+          height: 200px;
+          border-radius: 15px;
+          margin: 1rem;
+          object-fit: cover;
+          box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        }
+
+        .showcase .cards {
+          justify-content: center;
+        }
+
+        .showcase .showcase-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .showcase .hidden {
+          display: none;
+        }
+
+        .notification {
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--primaryBg);
+          color: var(--primaryFg);
+          padding: 1rem 2rem;
+          border-radius: 15px;
+          box-shadow: 0px 0px 15px 0px var(--primaryHi);
+          display: none;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .notification i {
+          color: var(--primaryFg);
+        }
+
+        .notification.show {
+          display: flex;
+        }
+
+        svg {
+          position: absolute;
+          z-index: 2;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @media screen and (max-width: 1000px) {
+          .hero h1 {
+            font-size: 2.5rem;
+          }
+
+          .hero p {
+            font-size: 1rem;
+          }
+
+          .tabs {
+            flex-direction: column;
+          }
+
+          .tabs .tab {
+            margin-bottom: 0.5rem;
+          }
+
+          .card {
+            width: 90%;
+          }
+
+          .showcase img, .showcase video, .showcase iframe {
+            width: 90%;
+            height: auto;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .hero h1 {
+            font-size: 2rem;
+          }
+
+          .hero p {
+            font-size: 0.875rem;
+          }
+
+          .buttons .button {
+            height: 40px;
+            width: 140px;
+            font-size: 0.875rem;
+          }
+
+          .tabs {
+            flex-direction: column;
+          }
+
+          .tabs .tab {
+            margin-bottom: 0.5rem;
+          }
+
+          .card {
+            width: 90%;
+          }
+
+          .showcase img, .showcase video, .showcase iframe {
+            width: 90%;
+            height: auto;
+          }
+        }
+
+        ::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: var(--secondaryBg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: var(--primaryBg);
+          border-radius: 20px;
+          border: 3px solid var(--secondaryBg);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+    <!-- Include Tailwind CSS for development (Replace with Tailwind CSS CLI for production) -->
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css?family=Manrope:400,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+<link rel="icon" href="logo.png" type="image/png">
+
+<style>
+  /* Styles for both desktop and mobile navbars */
+  .desktop-navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      padding: 20px 10%;
+      background-color: transparent;
+  }
+
+  .menu {
+      color: var(--textDim);
+      text-decoration: none;
+      margin-left: 1rem;
+      transition: color 0.3s ease;
+  }
+
+  .menu:hover {
+      color: var(--text);
+  }
+
+  .mobile-navbar {
+      display: none;
+      background-color: var(--primaryBg);
+      padding: 16px;
+      justify-content: space-between;
+      align-items: center;
+      box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+      border-radius: 15px;
+      position: fixed;
+      top: 10px;
+      left: 10px;
+      z-index: 10;
+      flex-direction: column;
+  }
+
+  .mobile-navbar button {
+      background-color: var(--primaryBg);
+      box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+      color: var(--primaryFg);
+      border: none;
+      border-radius: 15px;
+      padding: 8px 16px;
+      cursor: pointer;
+  }
+
+  .mobile-navbar button:hover {
+      transform: translateY(5px);
+      box-shadow: 0px 0px 20px var(--primaryHi);
+  }
+
+  #menu {
+      display: none;
+      background-color: var(--primaryBg);
+      box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+      border-radius: 15px;
+      margin-top: 1rem;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      z-index: 10;
+  }
+
+  #menu a {
+      display: block;
+      padding: 12px 16px;
+      color: var(--primaryFg);
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+  }
+
+  #menu a:hover {
+      background-color: var(--secondaryBg);
+  }
+
+  @media (min-width: 768px) {
+      .mobile-navbar, #menu {
+          display: none;
+      }
+      .desktop-navbar {
+          display: flex;
+      }
+  }
+
+  @media (max-width: 768px) {
+      .desktop-navbar {
+          display: none;
+      }
+      .mobile-navbar {
+          display: flex;
+      }
+  }
+
+  .menu-show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+  }
+</style>
+
+<header class="desktop-navbar">
+    <div class="sitename text-2xl font-bold">RivalKits</div>
+    <nav>
+        <a href="index.html" class="menu">Home</a>
+        <a href="about.html" class="menu">About</a>
+        <a href="features.html" class="menu">Features</a>
+        <a href="https://store.rivalkitsmc.com" target="_blank" class="menu">Store</a>
+        <a href="https://topminecraftservers.org/server/35779" target="_blank" class="menu">Vote</a>
+    </nav>
+</header>
+
+<div class="mobile-navbar">
+    <div class="text-2xl font-bold text-white">RivalKits</div>
+    <button id="menuBtn" class="text-white focus:outline-none">
+        <i class="fas fa-bars"></i>
+    </button>
+    <div id="menu" class="bg-gray-800 text-white">
+        <a href="index.html" class="block py-2 px-4">Home</a>
+        <a href="about.html" class="block py-2 px-4">About</a>
+        <a href="features.html" class="block py-2 px-4">Features</a>
+        <a href="https://store.rivalkitsmc.com" target="_blank" class="block py-2 px-4">Store</a>
+        <a href="https://topminecraftservers.org/server/35779" target="_blank" class="block py-2 px-4">Vote</a>
+    </div>
+</div>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', function() {
+      const menu = document.getElementById('menu');
+      if (menu.classList.contains('menu-show')) {
+          menu.classList.remove('menu-show');
+          menu.style.opacity = '0';
+          menu.style.transform = 'translateY(-20px)';
+          setTimeout(() => {
+              menu.style.display = 'none';
+          }, 300);
+      } else {
+          menu.style.display = 'block';
+          setTimeout(() => {
+              menu.classList.add('menu-show');
+              menu.style.opacity = '1';
+              menu.style.transform = 'translateY(0)';
+          }, 10);
+      }
+  });
+
+  function adjustResponsiveElements() {
+      var elements = document.querySelectorAll('.responsive');
+      elements.forEach(function(element) {
+          element.style.width = window.innerWidth + 'px';
+          element.style.height = window.innerHeight + 'px';
+      });
+  }
+
+  function forceResize() {
+      adjustResponsiveElements();
+      setTimeout(forceResize, 1000); // Adjust elements every second to counter any unresizing issues
+  }
+
+  function detectDeviceType() {
+      const ua = navigator.userAgent;
+      if (/Mobi|Android/i.test(ua)) {
+          document.body.classList.add('mobile');
+      } else {
+          document.body.classList.add('desktop');
+      }
+  }
+
+  function checkAndResize() {
+      var docWidth = document.documentElement.clientWidth;
+      var bodyWidth = document.body.scrollWidth;
+      if (bodyWidth > docWidth) {
+          adjustResponsiveElements();
+      }
+      setTimeout(checkAndResize, 2500); // Check every 2.5 seconds
+  }
+
+  // Log and resize on unresizing issues
+  function monitorResizeIssues() {
+      setInterval(() => {
+          const docWidth = document.documentElement.clientWidth;
+          const bodyWidth = document.body.scrollWidth;
+          if (bodyWidth > docWidth) {
+              console.error('Unresizing issue detected: bodyWidth > docWidth');
+              adjustResponsiveElements();
+          }
+      }, 1000);
+  }
+
+  // Adjust elements on page load and resize
+  window.onload = () => {
+      detectDeviceType();
+      forceResize();
+      checkAndResize();
+      monitorResizeIssues();
+  };
+  window.onresize = forceResize;
+</script>
+
+    <div class="hero">
+        <h1>About RivalKits</h1>
+        <p>Learn more about our unique Minecraft server.</p>
+    </div>
+    <div class="section">
+    <div class="section">
+        <h2>Server Highlights</h2>
+        <div class="cards">
+            <div class="card">
+                <p>Custom Kits: Explore a variety of custom kits designed to enhance your gameplay experience.</p>
+                <span></span>
+            </div>
+            <div class="card">
+                <p>Exciting Game Modes: Participate in unique game modes that keep the action fresh and exciting.</p>
+                <span></span>
+            </div>
+            <div class="card">
+                <p>Active Community: Join a thriving community of Minecraft enthusiasts and make new friends.</p>
+                <span></span>
+            </div>
+            <div class="card">
+                <p>Regular Updates: Enjoy new content and updates to keep your experience engaging.</p>
+                <span></span>
+            </div>
+        </div>
+    </div>
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+    <div class="glow glow4"></div>
+    <div class="glow glow5"></div>
+    <div class="glow glow6"></div>
+    <div class="glow glow7"></div>
+    <svg>
+        <filter id='noiseFilter'>
+            <feTurbulence 
+                type='fractalNoise' 
+                baseFrequency='0.6' 
+                stitchTiles='stitch'/>
+        </filter>
+    </svg>
+    <svg>
+        <filter id='noiseFilter2'>
+            <feTurbulence 
+                type='fractalNoise' 
+                baseFrequency='0.6' 
+                stitchTiles='stitch'/>
+        </filter>
+    </svg>
+    <script>
+        // Ensure the grainy SVG filter is applied
+        function ensureGrainySVG() {
+            const noiseFilter = document.querySelector('filter#noiseFilter');
+            const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+            if (!noiseFilter || !noiseFilter2) {
+                const svgNS = "http://www.w3.org/2000/svg";
+                const svg = document.createElementNS(svgNS, "svg");
+                const filter = document.createElementNS(svgNS, "filter");
+                filter.setAttribute("id", "noiseFilter");
+                const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence.setAttribute("type", "fractalNoise");
+                feTurbulence.setAttribute("baseFrequency", "0.6");
+                feTurbulence.setAttribute("stitchTiles", "stitch");
+                filter.appendChild(feTurbulence);
+                svg.appendChild(filter);
+
+                const filter2 = document.createElementNS(svgNS, "filter");
+                filter2.setAttribute("id", "noiseFilter2");
+                const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence2.setAttribute("type", "fractalNoise");
+                feTurbulence2.setAttribute("baseFrequency", "0.6");
+                feTurbulence2.setAttribute("stitchTiles", "stitch");
+                filter2.appendChild(feTurbulence2);
+                svg.appendChild(filter2);
+
+                document.body.appendChild(svg);
+            }
+        }
+
+        ensureGrainySVG();
+    </script>
+</body>
+</html>

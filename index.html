@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RivalKits Minecraft Server</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manrope:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+        :root {
+          --text: hsl(0, 0%, 99%);
+          --textDim: hsl(0, 0%, 60%);
+          --background: hsl(0, 0%, 7%);
+          --primary: hsl(0, 100%, 50%);
+          --primaryBg: hsla(0, 100%, 50%, 1%);
+          --primaryHi: hsla(0, 100%, 60%, 25%);
+          --primaryFg: hsl(0, 100%, 85%);
+          --secondary: hsl(0, 51%, 14%);
+          --secondaryFg: hsl(0, 51%, 75%);
+          --secondaryBg: hsla(0, 52%, 14%, 0);
+          --secondaryHi: hsla(0, 51%, 30%, 50%);
+          --accent: hsl(0, 100%, 94%);
+          --accentBg: hsla(0, 100%, 94%, 1%);
+          --accentHi: hsla(0, 100%, 100%, 25%);
+        }
+
+        body {
+          font-family: 'Manrope', sans-serif;
+          font-weight: 400;
+          background-color: var(--background);
+          color: var(--text);
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          overflow-x: hidden;
+          position: relative;
+          scroll-behavior: smooth;
+          animation: fadeIn 2s ease-in-out;
+        }
+
+        body::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+          filter: url(#noiseFilter);
+          opacity: 0.1; /* Adjust the opacity for a more subtle effect */
+          z-index: -1;
+        }
+
+        header {
+          width: 100%;
+          padding: 20px 10%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          z-index: 10;
+        }
+
+        nav {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          gap: 2rem;
+          color: var(--textDim);
+        }
+
+        .menu:hover {
+          color: var(--text);
+          cursor: pointer;
+        }
+
+        .sitename {
+          font-weight: bold;
+        }
+
+        .hero {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          height: 70vh;
+          z-index: 1;
+          position: relative;
+        }
+
+        .hero h1 {
+          font-size: 4rem;
+          font-weight: 700;
+          margin-bottom: 1rem;
+          position: relative;
+          z-index: 2;
+        }
+
+        .hero p {
+          font-size: 1.25rem;
+          color: var(--textDim);
+          margin-bottom: 2rem;
+        }
+
+        .buttons {
+          display: flex;
+          gap: 1rem;
+        }
+
+        .button {
+          text-decoration: none;
+          color: inherit;
+          cursor: pointer;
+          height: 50px;
+          width: 160px;
+          position: relative;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          border-radius: 15px;
+          transition: all 0.3s ease;
+        }
+
+        .button.primary {
+          background-color: var(--primaryBg);
+          box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+          color: var(--primaryFg);
+        }
+
+        .button.accent {
+          background-color: var(--accentBg);
+          box-shadow: 0px -3px 15px 0px var(--accentHi) inset;
+          color: var(--accentFg);
+        }
+
+        .button.secondary {
+          background-color: var(--secondaryBg);
+          box-shadow: 0px -3px 15px 0px var(--secondary) inset;
+          color: var(--secondaryFg);
+        }
+
+        .button span {
+          width: 100px;
+          height: 60px;
+          background-color: var(--primaryHi);
+          border-radius: 100%;
+          filter: blur(20px);
+          position: absolute;
+          bottom: -50%;
+          transition: all 0.2s ease;
+        }
+
+        .button.primary span {
+          background-color: var(--primaryHi);
+        }
+
+        .button.accent span {
+          background-color: var(--accentHi);
+        }
+
+        .button.secondary span {
+          background-color: var(--secondaryHi);
+        }
+
+        .button:hover span {
+          opacity: 60%;
+        }
+
+        .button:hover {
+          transform: translateY(5px);
+        }
+
+        .section {
+          padding: 5rem 10%;
+          text-align: center;
+          border-radius: 15px;
+          background-color: var(--secondaryBg);
+          margin: 2rem 0;
+          z-index: 1;
+        }
+
+        .tabs {
+          display: flex;
+          justify-content: center;
+          gap: 1rem;
+          margin-bottom: 2rem;
+        }
+
+        .tab {
+          padding: 1rem 2rem;
+          cursor: pointer;
+          background-color: var(--background);
+          border: 1px solid var(--textDim);
+          color: var(--textDim);
+          border-radius: 15px;
+          transition: all 0.3s ease;
+        }
+
+        .tab.active {
+          background-color: var(--primaryBg);
+          color: var(--primaryFg);
+          border: 1px solid var(--primaryFg);
+        }
+
+        .tab-content {
+          display: none;
+          border-radius: 15px;
+          animation: fadeIn 1s ease;
+        }
+
+        .tab-content.active {
+          display: block;
+        }
+
+        .card {
+          background-color: var(--primaryBg);
+          box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+          color: var(--primaryFg);
+          border-radius: 15px;
+          padding: 1rem 2rem;
+          margin: 1rem;
+          width: 300px;
+          position: relative;
+          display: inline-block;
+          text-align: center;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card span {
+          width: 100px;
+          height: 60px;
+          background-color: var(--primaryHi);
+          border-radius: 100%;
+          filter: blur(20px);
+          position: absolute;
+          bottom: -20px;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: all 0.2s ease;
+        }
+
+        .card:hover span {
+          opacity: 60%;
+        }
+
+        .card:hover {
+          transform: translateY(5px);
+          box-shadow: 0px 0px 20px var(--primaryHi);
+        }
+
+        .cards {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 2rem;
+        }
+
+        .glow {
+          position: absolute;
+          border-radius: 50%;
+          filter: blur(100px);
+          opacity: 0.7;
+        }
+
+        .glow1 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--primary);
+          top: 20%;
+          left: 10%;
+        }
+
+        .glow2 {
+          width: 300px;
+          height: 300px;
+          background-color: var(--secondary);
+          top: 50%;
+          right: 10%;
+        }
+
+        .glow3 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--accent);
+          bottom: 10%;
+          left: 40%;
+        }
+
+        .glow4 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--primary);
+          top: 70%;
+          right: 30%;
+        }
+
+        .glow5 {
+          width: 350px;
+          height: 350px;
+          background-color: var(--secondary);
+          top: 20%;
+          left: 30%;
+        }
+
+        .glow6 {
+          width: 100px;
+          height: 100px;
+          background-color: var(--accent);
+          bottom: 20%;
+          right: 40%;
+        }
+
+        .glow7 {
+          width: 400px;
+          height: 200px;
+          background-color: var(--primary);
+          top: 30%;
+          left: 50%;
+          transform: translateX(-50%);
+          filter: blur(100px);
+        }
+
+        .glow8 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          top: 80%;
+          left: 20%;
+        }
+
+        .glow9 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--primary);
+          top: 60%;
+          left: 70%;
+        }
+
+        .glow10 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--accent);
+          bottom: 30%;
+          right: 50%;
+        }
+
+        .glow11 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          top: 10%;
+          right: 10%;
+        }
+
+        .glow12 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--primary);
+          bottom: 60%;
+          right: 70%;
+        }
+
+        .glow13 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--accent);
+          top: 20%;
+          right: 50%;
+        }
+
+        .glow14 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          top: 70%;
+          left: 80%;
+        }
+
+        .glow15 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--primary);
+          bottom: 10%;
+          right: 20%;
+        }
+
+        .glow16 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--accent);
+          bottom: 50%;
+          left: 50%;
+        }
+
+        .glow17 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          bottom: 20%;
+          right: 10%;
+        }
+
+        .glow18 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--primary);
+          bottom: 40%;
+          left: 10%;
+        }
+
+        .glow19 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--accent);
+          bottom: 80%;
+          right: 30%;
+        }
+
+        .glow20 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          bottom: 30%;
+          right: 70%;
+        }
+
+        .glow21 {
+          width: 150px;
+          height: 150px;
+          background-color: var(--primary);
+          bottom: 60%;
+          left: 20%;
+        }
+
+        .glow22 {
+          width: 250px;
+          height: 250px;
+          background-color: var(--accent);
+          bottom: 10%;
+          right: 10%;
+        }
+
+        .glow23 {
+          width: 200px;
+          height: 200px;
+          background-color: var(--secondary);
+          top: 90%;
+          left: 90%;
+        }
+
+        .showcase {
+          padding: 5rem 10%;
+          text-align: center;
+          border-radius: 15px;
+          background-color: var(--secondaryBg);
+          margin: 2rem 0;
+          z-index: 1;
+        }
+
+        .showcase img, .showcase video, .showcase iframe {
+          width: 300px;
+          height: 200px;
+          border-radius: 15px;
+          margin: 1rem;
+          object-fit: cover;
+          box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        }
+
+        .showcase .cards {
+          justify-content: center;
+        }
+
+        .showcase .showcase-item {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+
+        .showcase .hidden {
+          display: none;
+        }
+
+        .notification {
+          position: fixed;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: var(--primaryBg);
+          color: var(--primaryFg);
+          padding: 1rem 2rem;
+          border-radius: 15px;
+          box-shadow: 0px 0px 15px 0px var(--primaryHi);
+          display: none;
+          align-items: center;
+          gap: 1rem;
+        }
+
+        .notification i {
+          color: var(--primaryFg);
+        }
+
+        .notification.show {
+          display: flex;
+        }
+
+        .hidden {
+          display: none;
+        }
+
+        svg {
+          position: absolute;
+          z-index: 2;
+        }
+
+        .showcase h2 {
+          font-size: 2.5rem;
+          font-weight: bold;
+        }
+
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+
+        @media screen and (max-width: 1000px) {
+          .hero h1 {
+            font-size: 3rem;
+          }
+
+          .hero p {
+            font-size: 1rem;
+          }
+
+          .tabs {
+            flex-direction: column;
+          }
+
+          .tabs .tab {
+            margin-bottom: 0.5rem;
+          }
+
+          .card {
+            width: 90%;
+          }
+
+          .showcase img, .showcase video, .showcase iframe {
+            width: 90%;
+            height: auto;
+          }
+        }
+
+        @media screen and (max-width: 600px) {
+          .hero h1 {
+            font-size: 2rem;
+          }
+
+          .hero p {
+            font-size: 0.875rem;
+          }
+
+          .buttons .button {
+            height: 40px;
+            width: 140px;
+            font-size: 0.875rem;
+          }
+
+          .tabs {
+            flex-direction: column;
+          }
+
+          .tabs .tab {
+            margin-bottom: 0.5rem;
+          }
+
+          .card {
+            width: 90%;
+          }
+
+          .showcase img, .showcase video, .showcase iframe {
+            width: 90%;
+            height: auto;
+          }
+        }
+
+        ::-webkit-scrollbar {
+          width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+          background: var(--secondaryBg);
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: var(--primaryBg);
+          border-radius: 20px;
+          border: 3px solid var(--secondaryBg);
+        }
+    </style>
+</head>
+<body>
+    <div class="noise-overlay"></div>
+      <!-- Include Tailwind CSS for development (Replace with Tailwind CSS CLI for production) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css?family=Manrope:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link rel="icon" href="logo.png" type="image/png">
+
+  <style>
+    /* Styles for both desktop and mobile navbars */
+    .desktop-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        padding: 20px 10%;
+        background-color: transparent;
+    }
+
+    .menu {
+        color: var(--textDim);
+        text-decoration: none;
+        margin-left: 1rem;
+        transition: color 0.3s ease;
+    }
+
+    .menu:hover {
+        color: var(--text);
+    }
+
+    .mobile-navbar {
+        display: none;
+        background-color: var(--primaryBg);
+        padding: 16px;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        border-radius: 15px;
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        z-index: 10;
+        flex-direction: column;
+    }
+
+    .mobile-navbar button {
+        background-color: var(--primaryBg);
+        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        color: var(--primaryFg);
+        border: none;
+        border-radius: 15px;
+        padding: 8px 16px;
+        cursor: pointer;
+    }
+
+    .mobile-navbar button:hover {
+        transform: translateY(5px);
+        box-shadow: 0px 0px 20px var(--primaryHi);
+    }
+
+    #menu {
+        display: none;
+        background-color: var(--primaryBg);
+        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        border-radius: 15px;
+        margin-top: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 10;
+    }
+
+    #menu a {
+        display: block;
+        padding: 12px 16px;
+        color: var(--primaryFg);
+        text-decoration: none;
+        transition: background-color 0.3s ease;
+    }
+
+    #menu a:hover {
+        background-color: var(--secondaryBg);
+    }
+
+    @media (min-width: 768px) {
+        .mobile-navbar, #menu {
+            display: none;
+        }
+        .desktop-navbar {
+            display: flex;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .desktop-navbar {
+            display: none;
+        }
+        .mobile-navbar {
+            display: flex;
+        }
+    }
+
+    .menu-show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+  </style>
+
+  <header class="desktop-navbar">
+      <div class="sitename text-2xl font-bold">RivalKits</div>
+      <nav>
+          <a href="index.html" class="menu">Home</a>
+          <a href="about.html" class="menu">About</a>
+          <a href="features.html" class="menu">Features</a>
+          <a href="https://store.rivalkitsmc.com" target="_blank" class="menu">Store</a>
+          <a href="https://topminecraftservers.org/server/35779" target="_blank" class="menu">Vote</a>
+      </nav>
+  </header>
+
+  <div class="mobile-navbar">
+      <div class="text-2xl font-bold text-white">RivalKits</div>
+      <button id="menuBtn" class="text-white focus:outline-none">
+          <i class="fas fa-bars"></i>
+      </button>
+      <div id="menu" class="bg-gray-800 text-white">
+          <a href="index.html" class="block py-2 px-4">Home</a>
+          <a href="about.html" class="block py-2 px-4">About</a>
+          <a href="features.html" class="block py-2 px-4">Features</a>
+          <a href="https://store.rivalkitsmc.com" target="_blank" class="block py-2 px-4">Store</a>
+          <a href="https://topminecraftservers.org/server/35779" target="_blank" class="block py-2 px-4">Vote</a>
+      </div>
+  </div>
+
+  <script>
+    document.getElementById('menuBtn').addEventListener('click', function() {
+        const menu = document.getElementById('menu');
+        if (menu.classList.contains('menu-show')) {
+            menu.classList.remove('menu-show');
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                menu.style.display = 'none';
+            }, 300);
+        } else {
+            menu.style.display = 'block';
+            setTimeout(() => {
+                menu.classList.add('menu-show');
+                menu.style.opacity = '1';
+                menu.style.transform = 'translateY(0)';
+            }, 10);
+        }
+    });
+
+    function adjustResponsiveElements() {
+        var elements = document.querySelectorAll('.responsive');
+        elements.forEach(function(element) {
+            element.style.width = window.innerWidth + 'px';
+            element.style.height = window.innerHeight + 'px';
+        });
+    }
+
+    function forceResize() {
+        adjustResponsiveElements();
+        setTimeout(forceResize, 1000); // Adjust elements every second to counter any unresizing issues
+    }
+
+    function detectDeviceType() {
+        const ua = navigator.userAgent;
+        if (/Mobi|Android/i.test(ua)) {
+            document.body.classList.add('mobile');
+        } else {
+            document.body.classList.add('desktop');
+        }
+    }
+
+    function checkAndResize() {
+        var docWidth = document.documentElement.clientWidth;
+        var bodyWidth = document.body.scrollWidth;
+        if (bodyWidth > docWidth) {
+            adjustResponsiveElements();
+        }
+        setTimeout(checkAndResize, 2500); // Check every 2.5 seconds
+    }
+
+    // Log and resize on unresizing issues
+    function monitorResizeIssues() {
+        setInterval(() => {
+            const docWidth = document.documentElement.clientWidth;
+            const bodyWidth = document.body.scrollWidth;
+            if (bodyWidth > docWidth) {
+                console.error('Unresizing issue detected: bodyWidth > docWidth');
+                adjustResponsiveElements();
+            }
+        }, 1000);
+    }
+
+    // Adjust elements on page load and resize
+    window.onload = () => {
+        detectDeviceType();
+        forceResize();
+        checkAndResize();
+        monitorResizeIssues();
+    };
+    window.onresize = forceResize;
+  </script>
+
+    <div class="hero">
+        <h1>Welcome to RivalKits</h1>
+        <p>Join the ultimate Minecraft experience with custom kits and exciting gameplay.</p>
+        <div class="buttons">
+            <a href="#" class="button primary" onclick="copyServerIP()">
+                Join Now
+                <span></span>
+            </a>
+            <a href="https://dc.rivalpvp.fun" class="button accent">
+                Join Discord
+                <span></span>
+            </a>
+        </div>
+    </div>
+    <div class="section">
+        <div class="tabs">
+            <div class="tab active" data-tab="tab1">Overview</div>
+            <div class="tab" data-tab="tab2">Features</div>
+        </div>
+        <div id="tab1" class="tab-content active">
+            <div class="card" style="margin: 0 auto;">
+                <h2>About RivalKits</h2>
+                <p>RivalKits is a unique Minecraft server offering a variety of custom kits and exciting gameplay modes. Our server is designed to provide players with a fun and engaging experience, whether you're a seasoned veteran or new to the game.</p>
+                <span></span>
+            </div>
+            <div class="cards">
+                <div class="card">
+                    <h3>Custom Kits</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Exciting Game Modes</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Active Community</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Regular Updates</h3>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-content">
+            <div class="cards">
+                <div class="card">
+                    <h3>Custom Items</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>TNT Carting</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Cheap Potions for Combat</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>1 Gold for Each Single Netherite Piece</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Misc Shopkeeper</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Shulkers</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Armor Trims and Food</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Banker NPC</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>AFK Pool</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Quests</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Auction House</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Ore Trader NPC</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Leaderboards</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Free Enchantment Tables</h3>
+                    <span></span>
+                </div>
+                <div class="card">
+                    <h3>Crates</h3>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="showcase">
+        <h2>Stream Showcase</h2>
+        <div class="cards">
+          <div class="showcase-item">
+              <iframe src="https://www.youtube.com/embed/ijFP-qfsu6Y" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>Moongamer90</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item">
+              <iframe src="https://www.youtube.com/embed/9P2GKzxhES8" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>@Predator_3gen</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item hidden">
+              <iframe src="#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>Placeholder</p>
+                  <span></span>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="showcase">
+        <h2>Video Showcase</h2>
+        <div class="cards">
+          <div class="showcase-item">
+              <iframe src="https://www.youtube.com/embed/gz2TrMnBRtU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>By: @euxcehimself</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item">
+              <iframe src="https://www.youtube.com/embed/nQjkCJxsjkg" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>By: @Nf_miller</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item hidden">
+              <iframe src="#" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+              <div class="card">
+                  <p>Placeholder</p>
+                  <span></span>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="showcase">
+        <h2>Image Showcase</h2>
+        <div class="cards">
+          <div class="showcase-item">
+              <img src="show1.png" alt="Showcase Image 1">
+              <div class="card">
+                  <p>By: @DevilishRak</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item">
+              <img src="show2.png" alt="Showcase Image 2">
+              <div class="card">
+                  <p>By: @DevilishRak</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item">
+              <img src="show3.png" alt="Showcase Image 3">
+              <div class="card">
+                  <p>By: @DevilishRak</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item hidden">
+              <img src="show4.png" alt="Showcase Image 4">
+              <div class="card">
+                  <p>Contributor</p>
+                  <span></span>
+              </div>
+          </div>
+          <div class="showcase-item hidden">
+              <img src="show5.png" alt="Showcase Image 5">
+              <div class="card">
+                  <p>Contributor</p>
+                  <span></span>
+              </div>
+          </div>
+        </div>
+    </div>
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+    <div class="glow glow4"></div>
+    <div class="glow glow5"></div>
+    <div class="glow glow6"></div>
+    <div class="glow glow7"></div>
+    <div class="glow glow8"></div>
+    <div class="glow glow9"></div>
+    <div class="glow glow10"></div>
+    <div class="glow glow11"></div>
+    <div class="glow glow12"></div>
+    <div class="glow glow13"></div>
+    <div class="glow glow14"></div>
+    <div class="glow glow15"></div>
+    <div class="glow glow16"></div>
+    <div class="glow glow17"></div>
+    <div class="glow glow18"></div>
+    <div class="glow glow19"></div>
+    <div class="glow glow20"></div>
+    <div class="glow glow21"></div>
+    <div class="glow glow22"></div>
+    <div class="glow glow23"></div>
+    <div class="notification" id="notification">
+        <i class="fas fa-check-circle"></i>
+        <span>Server IP "rivalkitz.minehut.gg" copied to clipboard!</span>
+    </div>
+    <svg>
+        <filter id='noiseFilter'>
+            <feTurbulence 
+                type='fractalNoise' 
+                baseFrequency='0.6' 
+                stitchTiles='stitch'/>
+        </filter>
+    </svg>
+    <svg>
+        <filter id='noiseFilter2'>
+            <feTurbulence 
+                type='fractalNoise' 
+                baseFrequency='0.6' 
+                stitchTiles='stitch'/>
+        </filter>
+    </svg>
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        function copyServerIP() {
+            const serverIP = "rivalkitz.minehut.gg";
+            const textarea = document.createElement("textarea");
+            textarea.value = serverIP;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textarea);
+
+            const notification = document.getElementById("notification");
+            notification.classList.add("show");
+            setTimeout(() => {
+                notification.classList.remove("show");
+            }, 3000);
+        }
+
+        // Ensure the grainy SVG filter is applied
+        function ensureGrainySVG() {
+            const noiseFilter = document.querySelector('filter#noiseFilter');
+            const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+            if (!noiseFilter || !noiseFilter2) {
+                const svgNS = "http://www.w3.org/2000/svg";
+                const svg = document.createElementNS(svgNS, "svg");
+                const filter = document.createElementNS(svgNS, "filter");
+                filter.setAttribute("id", "noiseFilter");
+                const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence.setAttribute("type", "fractalNoise");
+                feTurbulence.setAttribute("baseFrequency", "0.6");
+                feTurbulence.setAttribute("stitchTiles", "stitch");
+                filter.appendChild(feTurbulence);
+                svg.appendChild(filter);
+
+                const filter2 = document.createElementNS(svgNS, "filter");
+                filter2.setAttribute("id", "noiseFilter2");
+                const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence2.setAttribute("type", "fractalNoise");
+                feTurbulence2.setAttribute("baseFrequency", "0.6");
+                feTurbulence2.setAttribute("stitchTiles", "stitch");
+                filter2.appendChild(feTurbulence2);
+                svg.appendChild(filter2);
+
+                document.body.appendChild(svg);
+            }
+        }
+
+        ensureGrainySVG();
+    </script>
+</body>
+</html>
