@@ -12,6 +12,48 @@
     <!-- Tebex Scripts -->
     <script src="https://store.rivalkitsmc.com/checkout/resources/js/global.js"></script>
     <link rel="stylesheet" href="https://store.rivalkitsmc.com/checkout/resources/css/global.css">
+<style>
+    /* Animation for body fade-in */
+    body {
+        animation: fadeIn 2s ease-in-out;
+    }
+
+    /* Animation for tab content fade-in */
+    .tab-content {
+        display: none;
+        border-radius: 15px;
+        animation: fadeIn 1s ease;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Menu animations */
+    #menu {
+        display: none;
+        background-color: var(--primaryBg);
+        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+        border-radius: 15px;
+        margin-top: 1rem;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        z-index: 10;
+    }
+
+    .menu-show {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+</style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
 
@@ -996,6 +1038,35 @@
   });
 </script>
 
+<script>
+    document.querySelectorAll('.tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+            tab.classList.add('active');
+            document.getElementById(tab.dataset.tab).classList.add('active');
+        });
+    });
+
+    document.getElementById('menuBtn').addEventListener('click', function() {
+        const menu = document.getElementById('menu');
+        if (menu.classList.contains('menu-show')) {
+            menu.classList.remove('menu-show');
+            menu.style.opacity = '0';
+            menu.style.transform = 'translateY(-20px)';
+            setTimeout(() => {
+                menu.style.display = 'none';
+            }, 300);
+        } else {
+            menu.style.display = 'block';
+            setTimeout(() => {
+                menu.classList.add('menu-show');
+                menu.style.opacity = '1';
+                menu.style.transform = 'translateY(0)';
+            }, 10);
+        }
+    });
+</script>
 
 </body>
 
