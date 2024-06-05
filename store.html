@@ -1,0 +1,1002 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Store | RivalKits</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css?family=Manrope:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="icon" href="logo.png" type="image/png">
+    <!-- Tebex Scripts -->
+    <script src="https://store.rivalkitsmc.com/checkout/resources/js/global.js"></script>
+    <link rel="stylesheet" href="https://store.rivalkitsmc.com/checkout/resources/css/global.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+        :root {
+            --text: hsl(0, 0%, 99%);
+            --textDim: hsl(0, 0%, 60%);
+            --background: hsl(0, 0%, 7%);
+            --primary: hsl(0, 100%, 50%);
+            --primaryBg: hsla(0, 100%, 50%, 1%);
+            --primaryHi: hsla(0, 100%, 60%, 25%);
+            --primaryFg: hsl(0, 100%, 85%);
+            --secondary: hsl(0, 51%, 14%);
+            --secondaryFg: hsl(0, 51%, 75%);
+            --secondaryBg: hsla(0, 52%, 14%, 0);
+            --secondaryHi: hsla(0, 51%, 30%, 50%);
+            --accent: hsl(0, 100%, 94%);
+            --accentBg: hsla(0, 100%, 85%);
+            --accentHi: hsla(0, 100%, 100%, 25%);
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            font-weight: 400;
+            background-color: var(--background);
+            color: var(--text);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            overflow-x: hidden;
+            position: relative;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            width: 100%;
+            padding: 20px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 2rem;
+            color: var(--textDim);
+        }
+
+        .menu:hover {
+            color: var(--text);
+            cursor: pointer;
+        }
+
+        .sitename {
+            font-weight: bold;
+        }
+
+        .section {
+            padding: 5rem 10%;
+            text-align: center;
+            border-radius: 15px;
+            background-color: var(--secondaryBg);
+            margin: 14rem 0;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab {
+            padding: 1rem 2rem;
+            cursor: pointer;
+            background-color: var(--background);
+            border: 1px solid var(--textDim);
+            color: var(--textDim);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+        }
+
+        .tab.active {
+            background-color: var(--primaryBg);
+            color: var(--primaryFg);
+            border: 1px solid var(--primaryFg);
+        }
+
+        .tab-content {
+            display: none;
+            border-radius: 15px;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .card {
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            color: var(--primaryFg);
+            border-radius: 15px;
+            padding: 1rem 2rem;
+            margin: 1rem;
+            width: 300px;
+            position: relative;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .card button {
+            background-color: var(--primaryFg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .card button:hover {
+            background-color: var(--accentBg);
+            transform: translateY(-2px);
+            color: var(--primaryBg); /* Ensure the text color remains consistent */
+        }
+
+        .cards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .popup {
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            color: var(--primaryFg);
+            padding: 2rem;
+            border-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            z-index: 50;
+        }
+
+        .popup input {
+            border: 1px solid var(--primaryFg);
+            border-radius: 10px;
+            padding: 10px;
+            font-size: 1rem;
+            color: var(--text);
+            background-color: var(--secondaryBg);
+            opacity: 0.5;
+            margin-right: 10px; /* Editable value for spacing */
+        }
+
+        .popup button {
+            background-color: var(--primary);
+            color: var(--primaryFg);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+
+        .popup button:hover {
+            background-color: var(--accentBg);
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--primaryFg);
+            cursor: pointer;
+        }
+
+        .notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primaryBg);
+            color: var(--primaryFg);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            box-shadow: 0px 0px 15px 0px var(--primaryHi);
+            display: none;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .notification i {
+            color: var(--primaryFg);
+        }
+
+        .notification.show {
+            display: flex;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .glow {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(100px);
+            opacity: 0.7;
+            z-index: -1;
+        }
+
+        .glow1 {
+            width: 200px;
+            height: 200px;
+            background-color: var(--primary);
+            top: 20%;
+            left: 10%;
+        }
+
+        .glow2 {
+            width: 300px;
+            height: 300px;
+            background-color: var(--secondary);
+            top: 50%;
+            right: 10%;
+        }
+
+        .glow3 {
+            width: 150px;
+            height: 150px;
+            background-color: var(--accent);
+            bottom: 10%;
+            left: 40%;
+        }
+
+        .glow4 {
+            width: 250px;
+            height: 250px;
+            background-color: var(--primary);
+            top: 70%;
+            right: 30%;
+        }
+
+        .glow5 {
+            width: 350px;
+            height: 350px;
+            background-color: var(--secondary);
+            top: 20%;
+            left: 30%;
+        }
+
+        .glow6 {
+            width: 100px;
+            height: 100px;
+            background-color: var(--accent);
+            bottom: 20%;
+            right: 40%;
+        }
+
+        .glow7 {
+            width: 400px;
+            height: 200px;
+            background-color: var(--primary);
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            filter: blur(100px);
+        }
+
+        svg {
+            position: absolute;
+            z-index: 2;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @media screen and (max-width: 1000px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tabs .tab {
+                margin-bottom: 0.5rem;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .showcase img,
+            .showcase video,
+            .showcase iframe {
+                width: 90%;
+                height: auto;
+            }
+        }
+
+        @media screen and (max-width: 600px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 0.875rem;
+            }
+
+            .buttons .button {
+                height: 40px;
+                width: 140px;
+                font-size: 0.875rem;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+
+            .tabs .tab {
+                margin-bottom: 0.5rem;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .showcase img,
+            .showcase video,
+            .showcase iframe {
+                width: 90%;
+                height: auto;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="sitename text-2xl font-bold">RivalKits</div>
+        <nav>
+            <div class="menu"><a href="index.html">Home</a></div>
+            <div class="menu"><a href="about.html">About</a></div>
+            <div class="menu"><a href="features.html">Features</a></div>
+            <div class="menu"><a href="store.html">Store</a></div>
+            <div class="menu"><a href="https://topminecraftservers.org/server/35779" target="_blank">Vote</a></div>
+        </nav>
+    </header>
+    <div class="section">
+        <div class="tabs">
+            <div class="tab active" data-tab="tab1">Ranks</div>
+            <div class="tab" data-tab="tab2">Crate Keys</div>
+            <div class="tab" data-tab="tab3">Coins</div>
+        </div>
+        <div id="tab1" class="tab-content active">
+            <div class="cards">
+                <div class="card">
+                    <h3>Gold Rank</h3>
+                    <p>5.00 USD</p>
+                    <button onclick="openForm('Gold Rank', '6120844')">Purchase</button>
+                    <button onclick="openInfo('Gold Rank')" class="info-btn">i</button>
+                </div>
+                <div class="card">
+                    <h3>Diamond Rank</h3>
+                    <p>15.00 USD</p>
+                    <button onclick="openForm('Diamond Rank', '6209679')">Purchase</button>
+                    <button onclick="openInfo('Diamond Rank')" class="info-btn">i</button>
+                </div>
+            </div>
+        </div>
+        <div id="tab2" class="tab-content">
+            <div class="cards">
+                <div class="card">
+                    <h3>Keyall</h3>
+                    <p>1.00 USD</p>
+                    <button onclick="openForm('Keyall', '6248298')">Purchase</button>
+                    <button onclick="openInfo('Keyall')" class="info-btn">i</button>
+                </div>
+                <div class="card">
+                    <h3>Rival Key</h3>
+                    <p>2.00 USD</p>
+                    <button onclick="openForm('Rival Key', '6214953')">Purchase</button>
+                    <button onclick="openInfo('Rival Key')" class="info-btn">i</button>
+                </div>
+                <div class="card">
+                    <h3>3 Omega Keys</h3>
+                    <p>3.00 USD</p>
+                    <button onclick="openForm('3 Omega Keys', '6142609')">Purchase</button>
+                    <button onclick="openInfo('3 Omega Keys')" class="info-btn">i</button>
+                </div>
+            </div>
+        </div>
+        <div id="tab3" class="tab-content">
+            <div class="cards">
+                <div class="card">
+                    <h3>250 Coins</h3>
+                    <p>5.00 USD</p>
+                    <button onclick="openForm('250 Coins', '6153718')">Purchase</button>
+                    <button onclick="openInfo('250 Coins')" class="info-btn">i</button>
+                </div>
+                <div class="card">
+                    <h3>500 Gold</h3>
+                    <p>10.00 USD</p>
+                    <button onclick="openForm('500 Gold', '6153719')">Purchase</button>
+                    <button onclick="openInfo('500 Gold')" class="info-btn">i</button>
+                </div>
+                <div class="card">
+                    <h3>1000 Gold</h3>
+                    <p>20.00 USD</p>
+                    <button onclick="openForm('1000 Gold', '6193877')">Purchase</button>
+                    <button onclick="openInfo('1000 Gold')" class="info-btn">i</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Username input form -->
+    <div id="usernameForm" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+        <div class="popup">
+            <button class="close-btn" onclick="closeForm()">&times;</button>
+            <h4 class="mb-2">Enter username</h4>
+            <p class="mb-2">Please enter your username to continue</p>
+            <form method="post" id="purchaseForm">
+                <div class="username mb-4 flex items-center">
+                    <input type="text" name="ign" class="form-control input-lg form-control-lg" placeholder="Username" required>
+                    <button class="btn" type="submit">Continue<i class="fa fa-chevron-right ml-2"></i></button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Info popup form -->
+    <div id="infoForm" class="hidden fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center">
+        <div class="popup">
+            <button class="close-btn" onclick="closeInfo()">&times;</button>
+            <div class="info-content"></div>
+        </div>
+    </div>
+
+    <div class="glow glow1"></div>
+    <div class="glow glow2"></div>
+    <div class="glow glow3"></div>
+    <div class="glow glow4"></div>
+    <div class="glow glow5"></div>
+    <div class="glow glow6"></div>
+    <div class="glow glow7"></div>
+
+    <svg>
+      <filter id='noiseFilter'>
+          <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/>
+      </filter>
+  </svg>
+  <svg>
+      <filter id='noiseFilter2'>
+          <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/>
+      </filter>
+  </svg>
+
+<style>
+  .custom-purchase-btn {
+      font-family: 'Manrope', sans-serif;
+      font-weight: bold;
+      color: black !important;
+  }
+
+  .custom-info-btn {
+      font-family: 'Manrope', sans-serif;
+      font-weight: bold;
+      color: black !important;
+      font-size: 1.5rem;
+  }
+
+.card button::before {
+    content: 'Purchase';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+    color: black !important;
+    opacity: 1; /* Ensure the text is always visible */
+}
+
+.card .info-btn::before {
+    content: '🛈';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-family: 'Manrope', sans-serif;
+    font-weight: bold;
+    color: black !important;
+    opacity: 1; /* Ensure the text is always visible */
+}
+
+.card .info-btn:hover {
+    transform: translateY(-2px);
+    color: black; /* Ensure the text color remains consistent */
+}
+
+  .card button:hover::before {
+      opacity: 1;
+  }
+
+  .card button:hover {
+    background-color: var(--accentBg);
+    transform: translateY(-2px);
+    color: var(--primaryBg); /* Ensure the text color remains consistent */
+}
+
+  .info-btn {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      color: black;
+      position: absolute;
+      top: 0px;
+      right: 0px;
+  }
+</style>
+
+
+  
+  <script>
+  // Function to check and add text to purchase buttons
+  function ensurePurchaseButtonText() {
+      document.querySelectorAll('.card button').forEach(button => {
+          if (!button.textContent.trim()) {
+              button.textContent = 'Purchase';
+              button.classList.add('custom-purchase-btn');
+          }
+      });
+  }
+  
+  // Function to check and add info symbol to info buttons
+  function ensureInfoButton() {
+      document.querySelectorAll('.card .info-btn').forEach(button => {
+          if (!button.textContent.trim()) {
+              button.innerHTML = '🛈';
+              button.classList.add('custom-info-btn');
+          }
+      });
+  }
+  
+  // Run the functions initially
+  document.addEventListener('DOMContentLoaded', function() {
+      ensurePurchaseButtonText();
+      ensureInfoButton();
+  });
+  
+  // MutationObserver to monitor changes in the DOM and reapply the text/icon
+  const observer = new MutationObserver(function(mutations) {
+      mutations.forEach(mutation => {
+          if (mutation.type === 'childList') {
+              ensurePurchaseButtonText();
+              ensureInfoButton();
+          }
+      });
+  });
+  
+  // Configuration of the observer
+  const config = { childList: true, subtree: true };
+  
+  // Start observing the body for changes
+  observer.observe(document.body, config);
+  </script>
+  
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to check and add text to purchase buttons
+        function ensurePurchaseButtonText() {
+            document.querySelectorAll('.card button').forEach(button => {
+                if (!button.textContent.trim()) {
+                    button.textContent = '';
+                    button.classList.add('custom-purchase-btn');
+                }
+            });
+        }
+
+        // Function to check and add "i" icon to info buttons
+        function ensureInfoButtonText() {
+            document.querySelectorAll('.card .info-btn').forEach(button => {
+                if (!button.textContent.trim()) {
+                    button.textContent = '🛈';
+                    button.classList.add('custom-info-btn');
+                }
+            });
+        }
+
+        // Function to ensure the grainy SVG filter is applied
+        function ensureGrainySVG() {
+            const noiseFilter = document.querySelector('filter#noiseFilter');
+            const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+            if (!noiseFilter || !noiseFilter2) {
+                const svgNS = "http://www.w3.org/2000/svg";
+                const svg = document.createElementNS(svgNS, "svg");
+                const filter = document.createElementNS(svgNS, "filter");
+                filter.setAttribute("id", "noiseFilter");
+                const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence.setAttribute("type", "fractalNoise");
+                feTurbulence.setAttribute("baseFrequency", "0.6");
+                feTurbulence.setAttribute("stitchTiles", "stitch");
+                filter.appendChild(feTurbulence);
+                svg.appendChild(filter);
+
+                const filter2 = document.createElementNS(svgNS, "filter");
+                filter2.setAttribute("id", "noiseFilter2");
+                const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+                feTurbulence2.setAttribute("type", "fractalNoise");
+                feTurbulence2.setAttribute("baseFrequency", "0.6");
+                feTurbulence2.setAttribute("stitchTiles", "stitch");
+                filter2.appendChild(feTurbulence2);
+                svg.appendChild(filter2);
+
+                document.body.appendChild(svg);
+            }
+
+            const grainyOverlay = document.querySelector('.noise-overlay');
+            if (!grainyOverlay) {
+                const overlay = document.createElement('div');
+                overlay.classList.add('noise-overlay');
+                document.body.appendChild(overlay);
+            }
+
+            const styleSheet = document.styleSheets[0];
+            styleSheet.insertRule(`
+                .noise-overlay {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    pointer-events: none;
+                    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+                    filter: url(#noiseFilter);
+                    opacity: 0.1;
+                    z-index: -1;
+                }
+            `, styleSheet.cssRules.length);
+        }
+
+        // Run the functions initially
+        ensurePurchaseButtonText();
+        ensureInfoButtonText();
+        ensureGrainySVG();
+
+        // MutationObserver to monitor changes in the DOM and reapply the text/icon
+        const observer = new MutationObserver(function(mutations) {
+            mutations.forEach(mutation => {
+                if (mutation.type === 'childList') {
+                    ensurePurchaseButtonText();
+                    ensureInfoButtonText();
+                    ensureGrainySVG();
+                }
+            });
+        });
+
+        // Configuration of the observer
+        const config = { childList: true, subtree: true };
+
+        // Start observing the body for changes
+        observer.observe(document.body, config);
+    });
+</script>
+
+
+  <script>
+      // Ensure the grainy SVG filter is applied
+      function ensureGrainySVG() {
+          const noiseFilter = document.querySelector('filter#noiseFilter');
+          const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+          if (!noiseFilter || !noiseFilter2) {
+              const svgNS = "http://www.w3.org/2000/svg";
+              const svg = document.createElementNS(svgNS, "svg");
+              const filter = document.createElementNS(svgNS, "filter");
+              filter.setAttribute("id", "noiseFilter");
+              const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+              feTurbulence.setAttribute("type", "fractalNoise");
+              feTurbulence.setAttribute("baseFrequency", "0.6");
+              feTurbulence.setAttribute("stitchTiles", "stitch");
+              filter.appendChild(feTurbulence);
+              svg.appendChild(filter);
+
+              const filter2 = document.createElementNS(svgNS, "filter");
+              filter2.setAttribute("id", "noiseFilter2");
+              const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+              feTurbulence2.setAttribute("type", "fractalNoise");
+              feTurbulence2.setAttribute("baseFrequency", "0.6");
+              feTurbulence2.setAttribute("stitchTiles", "stitch");
+              filter2.appendChild(feTurbulence2);
+              svg.appendChild(filter2);
+
+              document.body.appendChild(svg);
+          }
+      }
+
+      ensureGrainySVG();
+
+      document.querySelectorAll('.tab').forEach(tab => {
+          tab.addEventListener('click', () => {
+              document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+              document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+              tab.classList.add('active');
+              document.getElementById(tab.dataset.tab).classList.add('active');
+          });
+      });
+
+        let packageId;
+
+        function openForm(packageName, id) {
+            packageId = id;
+            const form = document.getElementById('usernameForm');
+            form.classList.remove('hidden');
+            setTimeout(() => {
+                form.querySelector('.popup').style.opacity = '1';
+                form.querySelector('.popup').style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function closeForm() {
+            const form = document.getElementById('usernameForm');
+            form.querySelector('.popup').style.opacity = '0';
+            form.querySelector('.popup').style.transform = 'translateY(-50px)';
+            setTimeout(() => {
+                form.classList.add('hidden');
+            }, 300);
+        }
+
+        function openInfo(packageName) {
+            const infoContent = document.querySelector('.info-content');
+            infoContent.innerHTML = getInfoContent(packageName);
+            const form = document.getElementById('infoForm');
+            form.classList.remove('hidden');
+            setTimeout(() => {
+                form.querySelector('.popup').style.opacity = '1';
+                form.querySelector('.popup').style.transform = 'translateY(0)';
+            }, 10);
+        }
+
+        function closeInfo() {
+            const form = document.getElementById('infoForm');
+            form.querySelector('.popup').style.opacity = '0';
+            form.querySelector('.popup').style.transform = 'translateY(-50px)';
+            setTimeout(() => {
+                form.classList.add('hidden');
+            }, 300);
+        }
+
+        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const username = document.querySelector('input[name="ign"]').value;
+            const formAction = `https://store.rivalkitsmc.com/checkout/packages/add/${packageId}?username=${username}`;
+            this.setAttribute('action', formAction);
+            this.submit();
+        });
+
+        function getInfoContent(packageName) {
+            switch (packageName) {
+                case 'Gold Rank':
+                    return `
+                        <h4>Gold Rank</h4>
+                        <p>Perks:</p>
+                        <ul>
+                            <li>Gold prefix in chat & Tablist</li>
+                            <li>/Goldmine *Can mine without pvp*</li>
+                            <li>/Goldkit *8 hour CoolDown*</li>
+                            <li>/hat  *can put any item on your head*</li>
+                            <li>Kit: <img src="infopngs/GoldKit.png" alt="Gold Kit"></li>
+                            <li>/repair  *repairs damaged items*</li>
+                            <li>/feed *Fill up your hunger bar without eating*</li>
+                            <li>/enderchest *Access your enderchest*</li>
+                            <li>/workbench *Access a crafting table*</li>
+                            <li>/anvil *Access an anvil*</li>
+                            <li>/jukebox *can play random music*</li>
+                        </ul>
+                    `;
+                case 'Diamond Rank':
+                    return `
+                        <h4>Diamond Rank</h4>
+                        <p>Perks:</p>
+                        <ul>
+                            <li>Diamond prefix in chat & Tablist</li>
+                            <li>/diamondmine *Can mine without pvp*</li>
+                            <li>/diamondkit *5 hour CoolDown*</li>
+                            <li>Kit: <img src="infopngs/DiamondKit.png" alt="Diamond Kit"></li>
+                            <li>/repair  *repairs damaged items*</li>
+                            <li>/repair all *repairs all your items*</li>
+                            <li>/hat  *can put any item on your head*</li>
+                            <li>/feed *Fill up your hunger bar without eating*</li>
+                            <li>/enderchest *Access your enderchest *</li>
+                            <li>/workbench *Access a crafting table*</li>
+                            <li>/anvil *Access an anvil anywhere*</li>
+                            <li>/jukebox *can play random songs*</li>
+                            <li>/plots *Takes you to the plots*</li>
+                            <li>/plot claim *Lets you claim your plot*</li>
+                            <li>/plot visit *Can visit any ones plot*</li>
+                            <li>/plot home *tps you to your plot*</li>
+                            <li>/plot trust *gives other players access to your plot*</li>
+                            <li>/plot remove *takes away players access to your plot*</li>
+                        </ul>
+                    `;
+                case 'Keyall':
+                    return `<h4>Keyall</h4><p>Purchasing this will give everyone on the server a keyall crate key!</p>`;
+                case 'Rival Key':
+                    return `<h4>Rival Key</h4><p>Items in the crate:</p><img src="infopngs/RivalKey.png" alt="Rival Key Items">`;
+                case '3 Omega Keys':
+                    return `<h4>3 Omega Keys</h4><p>Items in the crate:</p><img src="infopngs/3Omega.png" alt="3 Omega Key Items">`;
+                case '250 Coins':
+                    return `<h4>250 Coins</h4><p>This will give you 150 ingame Gold.</p>`;
+                case '500 Gold':
+                    return `<h4>500 Gold</h4><p>This will give you 500 ingame Gold.</p>`;
+                case '1000 Gold':
+                    return `<h4>1000 Gold</h4><p>You will get 1000 coins upon purchasing this!</p>`;
+                default:
+                    return `<p>No information available.</p>`;
+            }
+        }
+
+        function adjustResponsiveElements() {
+            var elements = document.querySelectorAll('.responsive');
+            elements.forEach(function(element) {
+                element.style.width = window.innerWidth + 'px';
+                element.style.height = window.innerHeight + 'px';
+            });
+        }
+
+        function forceResize() {
+            adjustResponsiveElements();
+            setTimeout(forceResize, 1000);
+        }
+
+        function detectDeviceType() {
+            const ua = navigator.userAgent;
+            if (/Mobi|Android/i.test(ua)) {
+                document.body.classList.add('mobile');
+            } else {
+                document.body.classList.add('desktop');
+            }
+        }
+
+        function checkAndResize() {
+            var docWidth = document.documentElement.clientWidth;
+            var bodyWidth = document.body.scrollWidth;
+            if (bodyWidth > docWidth) {
+                adjustResponsiveElements();
+            }
+            setTimeout(checkAndResize, 2500);
+        }
+
+        window.onload = () => {
+            detectDeviceType();
+            forceResize();
+            checkAndResize();
+        };
+        window.onresize = forceResize;
+    </script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+      // Function to check and add text to purchase buttons
+      function ensurePurchaseButtonText() {
+          document.querySelectorAll('.card button').forEach(button => {
+              if (button.textContent.trim() === '') {
+                  button.classList.add('custom-purchase-btn');
+              }
+          });
+      }
+
+      // Function to check and add "🛈" icon to info buttons
+      function ensureInfoButtonText() {
+          document.querySelectorAll('.card .info-btn').forEach(button => {
+              if (!button.textContent.trim()) {
+                  button.innerHTML = '🛈';
+                  button.classList.add('custom-info-btn');
+              }
+          });
+      }
+
+      // Function to ensure the grainy SVG filter is applied
+      function ensureGrainySVG() {
+          const noiseFilter = document.querySelector('filter#noiseFilter');
+          const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+          if (!noiseFilter || !noiseFilter2) {
+              const svgNS = "http://www.w3.org/2000/svg";
+              const svg = document.createElementNS(svgNS, "svg");
+              const filter = document.createElementNS(svgNS, "filter");
+              filter.setAttribute("id", "noiseFilter");
+              const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+              feTurbulence.setAttribute("type", "fractalNoise");
+              feTurbulence.setAttribute("baseFrequency", "0.6");
+              feTurbulence.setAttribute("stitchTiles", "stitch");
+              filter.appendChild(feTurbulence);
+              svg.appendChild(filter);
+
+              const filter2 = document.createElementNS(svgNS, "filter");
+              filter2.setAttribute("id", "noiseFilter2");
+              const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+              feTurbulence2.setAttribute("type", "fractalNoise");
+              feTurbulence2.setAttribute("baseFrequency", "0.6");
+              feTurbulence2.setAttribute("stitchTiles", "stitch");
+              filter2.appendChild(feTurbulence2);
+              svg.appendChild(filter2);
+
+              document.body.appendChild(svg);
+          }
+
+          const grainyOverlay = document.querySelector('.noise-overlay');
+          if (!grainyOverlay) {
+              const overlay = document.createElement('div');
+              overlay.classList.add('noise-overlay');
+              document.body.appendChild(overlay);
+          }
+
+          const styleSheet = document.styleSheets[0];
+          styleSheet.insertRule(`
+              .noise-overlay {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  pointer-events: none;
+                  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+                  filter: url(#noiseFilter);
+                  opacity: 0.1;
+                  z-index: -1;
+              }
+          `, styleSheet.cssRules.length);
+      }
+
+      // Run the functions initially
+      ensurePurchaseButtonText();
+      ensureInfoButtonText();
+      ensureGrainySVG();
+
+      // MutationObserver to monitor changes in the DOM and reapply the text/icon
+      const observer = new MutationObserver(function(mutations) {
+          mutations.forEach(mutation => {
+              if (mutation.type === 'childList') {
+                  ensurePurchaseButtonText();
+                  ensureInfoButtonText();
+                  ensureGrainySVG();
+              }
+          });
+      });
+
+      // Configuration of the observer
+      const config = { childList: true, subtree: true };
+
+      // Start observing the body for changes
+      observer.observe(document.body, config);
+  });
+</script>
+
+
+</body>
+
+</html>
