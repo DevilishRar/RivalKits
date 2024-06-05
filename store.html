@@ -13,131 +13,137 @@
     <script src="https://store.rivalkitsmc.com/checkout/resources/js/global.js"></script>
     <link rel="stylesheet" href="https://store.rivalkitsmc.com/checkout/resources/css/global.css">
 
-<style>
-    /* Mobile Navbar Styles */
-    .mobile-navbar {
-        display: none;
-        background-color: var(--primaryBg);
-        padding: 16px;
-        justify-content: space-between;
-        align-items: center;
-        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
-        border-radius: 15px;
-        position: fixed;
-        top: 10px;
-        left: 10px;
-        z-index: 10;
-        flex-direction: column;
-    }
-
-    .mobile-navbar button {
-        background-color: var(--primaryBg);
-        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
-        color: var(--primaryFg);
-        border: none;
-        border-radius: 15px;
-        padding: 8px 16px;
-        cursor: pointer;
-    }
-
-    .mobile-navbar button:hover {
-        transform: translateY(5px);
-        box-shadow: 0px 0px 20px var(--primaryHi);
-    }
-
-    #menu {
-        display: none;
-        background-color: var(--primaryBg);
-        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
-        border-radius: 15px;
-        margin-top: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        z-index: 10;
-    }
-
-    #menu a {
-        display: block;
-        padding: 12px 16px;
-        color: var(--primaryFg);
-        text-decoration: none;
-        transition: background-color 0.3s ease;
-    }
-
-    #menu a:hover {
-        background-color: var(--secondaryBg);
-    }
-
-    @media (min-width: 768px) {
-        .mobile-navbar, #menu {
-            display: none;
-        }
-        .desktop-navbar {
-            display: flex;
-        }
-    }
-
-    @media (max-width: 768px) {
-        .desktop-navbar {
-            display: none;
-        }
-        .mobile-navbar {
-            display: flex;
-        }
-    }
-
-    .menu-show {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
-
-    
     <style>
-    /* Animation for body fade-in */
-    body {
-        animation: fadeIn 2s ease-in-out;
-    }
+        /* Mobile Navbar Styles */
+        .mobile-navbar {
+            display: none;
+            background-color: var(--primaryBg);
+            padding: 16px;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            border-radius: 15px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            flex-direction: column;
+        }
 
-    /* Animation for tab content fade-in */
-    .tab-content {
-        display: none;
-        border-radius: 15px;
-        animation: fadeIn 1s ease;
-    }
+        .mobile-navbar button {
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            color: var(--primaryFg);
+            border: none;
+            border-radius: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
 
-    .tab-content.active {
-        display: block;
-    }
+        .mobile-navbar button:hover {
+            transform: translateY(5px);
+            box-shadow: 0px 0px 20px var(--primaryHi);
+        }
 
-    @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-    }
+        #menu {
+            display: none;
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            border-radius: 15px;
+            margin-top: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 10;
+        }
 
-    /* Menu animations */
-    #menu {
-        display: none;
-        background-color: var(--primaryBg);
-        box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
-        border-radius: 15px;
-        margin-top: 1rem;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-        z-index: 10;
-    }
+        #menu a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primaryFg);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
 
-    .menu-show {
-        display: block;
-        opacity: 1;
-        transform: translateY(0);
-    }
-</style>
+        #menu a:hover {
+            background-color: var(--secondaryBg);
+        }
+
+        @media (min-width: 768px) {
+            .mobile-navbar, #menu {
+                display: none;
+            }
+
+            .desktop-navbar {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-navbar {
+                display: none;
+            }
+
+            .mobile-navbar {
+                display: flex;
+            }
+        }
+
+        .menu-show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <style>
+        /* Animation for body fade-in */
+        body {
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        /* Animation for tab content fade-in */
+        .tab-content {
+            display: none;
+            border-radius: 15px;
+            animation: fadeIn 1s ease;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Menu animations */
+        #menu {
+            display: none;
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            border-radius: 15px;
+            margin-top: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        .menu-show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
 
@@ -216,7 +222,7 @@
             cursor: pointer;
             background-color: var(--background);
             border: 1px solid var(--textDim);
-            color: var(--textDim);
+            color: var (--textDim);
             border-radius: 15px;
             transition: all 0.3s ease;
         }
@@ -254,7 +260,6 @@
             border: none;
             padding: 10px 20px;
             border-radius: 10px;
-
             cursor: pointer;
             transition: background-color 0.3s ease, transform 0.3s ease;
             position: relative;
@@ -263,7 +268,8 @@
         .card button:hover {
             background-color: var(--accentBg);
             transform: translateY(-2px);
-            color: var(--primaryBg); /* Ensure the text color remains consistent */
+            color: var(--primaryBg);
+            /* Ensure the text color remains consistent */
         }
 
         .cards {
@@ -299,7 +305,8 @@
             color: var(--text);
             background-color: var(--secondaryBg);
             opacity: 0.5;
-            margin-right: 10px; /* Editable value for spacing */
+            margin-right: 10px;
+            /* Editable value for spacing */
         }
 
         .popup button {
@@ -502,6 +509,111 @@
 
 <body>
     <style>
+        /* Styles for both desktop and mobile navbars */
+        .desktop-navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            padding: 20px 10%;
+            background-color: transparent;
+        }
+
+        .menu {
+            color: var(--textDim);
+            text-decoration: none;
+            margin-left: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .menu:hover {
+            color: var(--text);
+        }
+
+        .mobile-navbar {
+            display: none;
+            background-color: var(--primaryBg);
+            padding: 16px;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            border-radius: 15px;
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            z-index: 10;
+            flex-direction: column;
+        }
+
+        .mobile-navbar button {
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            color: var(--primaryFg);
+            border: none;
+            border-radius: 15px;
+            padding: 8px 16px;
+            cursor: pointer;
+        }
+
+        .mobile-navbar button:hover {
+            transform: translateY(5px);
+            box-shadow: 0px 0px 20px var(--primaryHi);
+        }
+
+        #menu {
+            display: none;
+            background-color: var(--primaryBg);
+            box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+            border-radius: 15px;
+            margin-top: 1rem;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            transition: transform 0.3s ease, opacity 0.3s ease;
+            z-index: 10;
+        }
+
+        #menu a {
+            display: block;
+            padding: 12px 16px;
+            color: var(--primaryFg);
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        #menu a:hover {
+            background-color: var(--secondaryBg);
+        }
+
+        @media (min-width: 768px) {
+            .mobile-navbar,
+            #menu {
+                display: none;
+            }
+
+            .desktop-navbar {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .desktop-navbar {
+                display: none;
+            }
+
+            .mobile-navbar {
+                display: flex;
+            }
+        }
+
+        .menu-show {
+            display: block;
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+
+    <style>
     /* Styles for both desktop and mobile navbars */
     .desktop-navbar {
         display: flex;
@@ -700,6 +812,93 @@
     };
     window.onresize = forceResize;
   </script>
+
+    <div class="mobile-navbar">
+        <div class="text-2xl font-bold text-white">RivalKits</div>
+        <button id="menuBtn" class="text-white focus:outline-none">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div id="menu" class="bg-gray-800 text-white">
+            <a href="index.html" class="block py-2 px-4">Home</a>
+            <a href="about.html" class="block py-2 px-4">About</a>
+            <a href="features.html" class="block py-2 px-4">Features</a>
+            <a href="https://store.rivalkitsmc.com" target="_blank" class="block py-2 px-4">Store</a>
+            <a href="https://topminecraftservers.org/server/35779" target="_blank" class="block py-2 px-4">Vote</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            if (menu.classList.contains('menu-show')) {
+                menu.classList.remove('menu-show');
+                menu.style.opacity = '0';
+                menu.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 300);
+            } else {
+                menu.style.display = 'block';
+                setTimeout(() => {
+                    menu.classList.add('menu-show');
+                    menu.style.opacity = '1';
+                    menu.style.transform = 'translateY(0)';
+                }, 10);
+            }
+        });
+
+        function adjustResponsiveElements() {
+            var elements = document.querySelectorAll('.responsive');
+            elements.forEach(function (element) {
+                element.style.width = window.innerWidth + 'px';
+                element.style.height = window.innerHeight + 'px';
+            });
+        }
+
+        function forceResize() {
+            adjustResponsiveElements();
+            setTimeout(forceResize, 1000); // Adjust elements every second to counter any unresizing issues
+        }
+
+        function detectDeviceType() {
+            const ua = navigator.userAgent;
+            if (/Mobi|Android/i.test(ua)) {
+                document.body.classList.add('mobile');
+            } else {
+                document.body.classList.add('desktop');
+            }
+        }
+
+        function checkAndResize() {
+            var docWidth = document.documentElement.clientWidth;
+            var bodyWidth = document.body.scrollWidth;
+            if (bodyWidth > docWidth) {
+                adjustResponsiveElements();
+            }
+            setTimeout(checkAndResize, 2500); // Check every 2.5 seconds
+        }
+
+        // Log and resize on unresizing issues
+        function monitorResizeIssues() {
+            setInterval(() => {
+                const docWidth = document.documentElement.clientWidth;
+                const bodyWidth = document.body.scrollWidth;
+                if (bodyWidth > docWidth) {
+                    console.error('Unresizing issue detected: bodyWidth > docWidth');
+                    adjustResponsiveElements();
+                }
+            }, 1000);
+        }
+
+        // Adjust elements on page load and resize
+        window.onload = () => {
+            detectDeviceType();
+            forceResize();
+            checkAndResize();
+            monitorResizeIssues();
+        };
+        window.onresize = forceResize;
+    </script>
     <div class="section">
         <div class="tabs">
             <div class="tab active" data-tab="tab1">Ranks</div>
@@ -800,214 +999,118 @@
     <div class="glow glow7"></div>
 
     <svg>
-      <filter id='noiseFilter'>
-          <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/>
-      </filter>
-  </svg>
-  <svg>
-      <filter id='noiseFilter2'>
-          <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch'/>
-      </filter>
-  </svg>
+        <filter id='noiseFilter'>
+            <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch' />
+        </filter>
+    </svg>
+    <svg>
+        <filter id='noiseFilter2'>
+            <feTurbulence type='fractalNoise' baseFrequency='0.6' stitchTiles='stitch' />
+        </filter>
+    </svg>
 
-<style>
-  .custom-purchase-btn {
-      font-family: 'Manrope', sans-serif;
-      font-weight: bold;
-      color: black !important;
-  }
+    <style>
+        .custom-purchase-btn {
+            font-family: 'Manrope', sans-serif;
+            font-weight: bold;
+            color: black !important;
+        }
 
-  .custom-info-btn {
-      font-family: 'Manrope', sans-serif;
-      font-weight: bold;
-      color: black !important;
-      font-size: 1.5rem;
-  }
+        .custom-info-btn {
+            font-family: 'Manrope', sans-serif;
+            font-weight: bold;
+            color: black !important;
+            font-size: 1.5rem;
+        }
 
-.card button::before {
-    content: 'Purchase';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Manrope', sans-serif;
-    font-weight: bold;
-    color: black !important;
-    opacity: 1; /* Ensure the text is always visible */
-}
+        .card button::before {
+            content: 'Purchase';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Manrope', sans-serif;
+            font-weight: bold;
+            color: black !important;
+            opacity: 1;
+            /* Ensure the text is always visible */
+        }
 
-.card .info-btn::before {
-    content: '🛈';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-family: 'Manrope', sans-serif;
-    font-weight: bold;
-    color: black !important;
-    opacity: 1; /* Ensure the text is always visible */
-}
+        .card .info-btn::before {
+            content: '🛈';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Manrope', sans-serif;
+            font-weight: bold;
+            color: black !important;
+            opacity: 1;
+            /* Ensure the text is always visible */
+        }
 
-.card .info-btn:hover {
-    transform: translateY(-2px);
-    color: black; /* Ensure the text color remains consistent */
-}
+        .card .info-btn:hover {
+            transform: translateY(-2px);
+            color: black;
+            /* Ensure the text color remains consistent */
+        }
 
-  .card button:hover::before {
-      opacity: 1;
-  }
+        .card button:hover::before {
+            opacity: 1;
+        }
 
-  .card button:hover {
-    background-color: var(--accentBg);
-    transform: translateY(-2px);
-    color: var(--primaryBg); /* Ensure the text color remains consistent */
-}
+        .card button:hover {
+            background-color: var(--accentBg);
+            transform: translateY(-2px);
+            color: var(--primaryBg);
+            /* Ensure the text color remains consistent */
+        }
 
-  .info-btn {
-      background-color: transparent;
-      border: none;
-      cursor: pointer;
-      font-size: 1rem;
-      color: black;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-  }
-</style>
+        .info-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            color: black;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+        }
+    </style>
 
-
-  
-  <script>
-  // Function to check and add text to purchase buttons
-  function ensurePurchaseButtonText() {
-      document.querySelectorAll('.card button').forEach(button => {
-          if (!button.textContent.trim()) {
-              button.textContent = 'Purchase';
-              button.classList.add('custom-purchase-btn');
-          }
-      });
-  }
-  
-  // Function to check and add info symbol to info buttons
-  function ensureInfoButton() {
-      document.querySelectorAll('.card .info-btn').forEach(button => {
-          if (!button.textContent.trim()) {
-              button.innerHTML = '🛈';
-              button.classList.add('custom-info-btn');
-          }
-      });
-  }
-  
-  // Run the functions initially
-  document.addEventListener('DOMContentLoaded', function() {
-      ensurePurchaseButtonText();
-      ensureInfoButton();
-  });
-  
-  // MutationObserver to monitor changes in the DOM and reapply the text/icon
-  const observer = new MutationObserver(function(mutations) {
-      mutations.forEach(mutation => {
-          if (mutation.type === 'childList') {
-              ensurePurchaseButtonText();
-              ensureInfoButton();
-          }
-      });
-  });
-  
-  // Configuration of the observer
-  const config = { childList: true, subtree: true };
-  
-  // Start observing the body for changes
-  observer.observe(document.body, config);
-  </script>
-  
-  <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    <script>
         // Function to check and add text to purchase buttons
         function ensurePurchaseButtonText() {
             document.querySelectorAll('.card button').forEach(button => {
                 if (!button.textContent.trim()) {
-                    button.textContent = '';
+                    button.textContent = 'Purchase';
                     button.classList.add('custom-purchase-btn');
                 }
             });
         }
 
-        // Function to check and add "i" icon to info buttons
-        function ensureInfoButtonText() {
+        // Function to check and add info symbol to info buttons
+        function ensureInfoButton() {
             document.querySelectorAll('.card .info-btn').forEach(button => {
                 if (!button.textContent.trim()) {
-                    button.textContent = '🛈';
+                    button.innerHTML = '🛈';
                     button.classList.add('custom-info-btn');
                 }
             });
         }
 
-        // Function to ensure the grainy SVG filter is applied
-        function ensureGrainySVG() {
-            const noiseFilter = document.querySelector('filter#noiseFilter');
-            const noiseFilter2 = document.querySelector('filter#noiseFilter2');
-
-            if (!noiseFilter || !noiseFilter2) {
-                const svgNS = "http://www.w3.org/2000/svg";
-                const svg = document.createElementNS(svgNS, "svg");
-                const filter = document.createElementNS(svgNS, "filter");
-                filter.setAttribute("id", "noiseFilter");
-                const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
-                feTurbulence.setAttribute("type", "fractalNoise");
-                feTurbulence.setAttribute("baseFrequency", "0.6");
-                feTurbulence.setAttribute("stitchTiles", "stitch");
-                filter.appendChild(feTurbulence);
-                svg.appendChild(filter);
-
-                const filter2 = document.createElementNS(svgNS, "filter");
-                filter2.setAttribute("id", "noiseFilter2");
-                const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
-                feTurbulence2.setAttribute("type", "fractalNoise");
-                feTurbulence2.setAttribute("baseFrequency", "0.6");
-                feTurbulence2.setAttribute("stitchTiles", "stitch");
-                filter2.appendChild(feTurbulence2);
-                svg.appendChild(filter2);
-
-                document.body.appendChild(svg);
-            }
-
-            const grainyOverlay = document.querySelector('.noise-overlay');
-            if (!grainyOverlay) {
-                const overlay = document.createElement('div');
-                overlay.classList.add('noise-overlay');
-                document.body.appendChild(overlay);
-            }
-
-            const styleSheet = document.styleSheets[0];
-            styleSheet.insertRule(`
-                .noise-overlay {
-                    position: fixed;
-                    top: 0;
-                    left: 0;
-                    width: 100%;
-                    height: 100%;
-                    pointer-events: none;
-                    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
-                    filter: url(#noiseFilter);
-                    opacity: 0.1;
-                    z-index: -1;
-                }
-            `, styleSheet.cssRules.length);
-        }
-
         // Run the functions initially
-        ensurePurchaseButtonText();
-        ensureInfoButtonText();
-        ensureGrainySVG();
+        document.addEventListener('DOMContentLoaded', function () {
+            ensurePurchaseButtonText();
+            ensureInfoButton();
+        });
 
         // MutationObserver to monitor changes in the DOM and reapply the text/icon
-        const observer = new MutationObserver(function(mutations) {
+        const observer = new MutationObserver(function (mutations) {
             mutations.forEach(mutation => {
                 if (mutation.type === 'childList') {
                     ensurePurchaseButtonText();
-                    ensureInfoButtonText();
-                    ensureGrainySVG();
+                    ensureInfoButton();
                 }
             });
         });
@@ -1017,51 +1120,317 @@
 
         // Start observing the body for changes
         observer.observe(document.body, config);
-    });
-</script>
+    </script>
 
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to check and add text to purchase buttons
+            function ensurePurchaseButtonText() {
+                document.querySelectorAll('.card button').forEach(button => {
+                    if (!button.textContent.trim()) {
+                        button.textContent = '';
+                        button.classList.add('custom-purchase-btn');
+                    }
+                });
+            }
 
-  <script>
-      // Ensure the grainy SVG filter is applied
-      function ensureGrainySVG() {
-          const noiseFilter = document.querySelector('filter#noiseFilter');
-          const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+            // Function to check and add "i" icon to info buttons
+            function ensureInfoButtonText() {
+                document.querySelectorAll('.card .info-btn').forEach(button => {
+                    if (!button.textContent.trim()) {
+                        button.textContent = '🛈';
+                        button.classList.add('custom-info-btn');
+                    }
+                });
+            }
 
-          if (!noiseFilter || !noiseFilter2) {
-              const svgNS = "http://www.w3.org/2000/svg";
-              const svg = document.createElementNS(svgNS, "svg");
-              const filter = document.createElementNS(svgNS, "filter");
-              filter.setAttribute("id", "noiseFilter");
-              const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
-              feTurbulence.setAttribute("type", "fractalNoise");
-              feTurbulence.setAttribute("baseFrequency", "0.6");
-              feTurbulence.setAttribute("stitchTiles", "stitch");
-              filter.appendChild(feTurbulence);
-              svg.appendChild(filter);
+            // Function to ensure the grainy SVG filter is applied
+            function ensureGrainySVG() {
+                const noiseFilter = document.querySelector('filter#noiseFilter');
+                const noiseFilter2 = document.querySelector('filter#noiseFilter2');
 
-              const filter2 = document.createElementNS(svgNS, "filter");
-              filter2.setAttribute("id", "noiseFilter2");
-              const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
-              feTurbulence2.setAttribute("type", "fractalNoise");
-              feTurbulence2.setAttribute("baseFrequency", "0.6");
-              feTurbulence2.setAttribute("stitchTiles", "stitch");
-              filter2.appendChild(feTurbulence2);
-              svg.appendChild(filter2);
+                if (!noiseFilter || !noiseFilter2) {
+                    const svgNS = "http://www.w3.org/2000/svg";
+                    const svg = document.createElementNS(svgNS, "svg");
+                    const filter = document.createElementNS(svgNS, "filter");
+                    filter.setAttribute("id", "noiseFilter");
+                    const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+                    feTurbulence.setAttribute("type", "fractalNoise");
+                    feTurbulence.setAttribute("baseFrequency", "0.6");
+                    feTurbulence.setAttribute("stitchTiles", "stitch");
+                    filter.appendChild(feTurbulence);
+                    svg.appendChild(filter);
 
-              document.body.appendChild(svg);
-          }
-      }
+                    const filter2 = document.createElementNS(svgNS, "filter");
+                    filter2.setAttribute("id", "noiseFilter2");
+                    const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+                    feTurbulence2.setAttribute("type", "fractalNoise");
+                    feTurbulence2.setAttribute("baseFrequency", "0.6");
+                    feTurbulence2.setAttribute("stitchTiles", "stitch");
+                    filter2.appendChild(feTurbulence2);
+                    svg.appendChild(filter2);
 
-      ensureGrainySVG();
+                    document.body.appendChild(svg);
+                }
 
-      document.querySelectorAll('.tab').forEach(tab => {
-          tab.addEventListener('click', () => {
-              document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-              document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-              tab.classList.add('active');
-              document.getElementById(tab.dataset.tab).classList.add('active');
-          });
-      });
+                const grainyOverlay = document.querySelector('.noise-overlay');
+                if (!grainyOverlay) {
+                    const overlay = document.createElement('div');
+                    overlay.classList.add('noise-overlay');
+                    document.body.appendChild(overlay);
+                }
+
+                const styleSheet = document.styleSheets[0];
+                styleSheet.insertRule(`
+                    .noise-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+                        filter: url(#noiseFilter);
+                        opacity: 0.1;
+                        z-index: -1;
+                    }
+                `, styleSheet.cssRules.length);
+            }
+
+            // Run the functions initially
+            ensurePurchaseButtonText();
+            ensureInfoButtonText();
+            ensureGrainySVG();
+
+            // MutationObserver to monitor changes in the DOM and reapply the text/icon
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'childList') {
+                        ensurePurchaseButtonText();
+                        ensureInfoButtonText();
+                        ensureGrainySVG();
+                    }
+                });
+            });
+
+            // Configuration of the observer
+            const config = { childList: true, subtree: true };
+
+            // Start observing the body for changes
+            observer.observe(document.body, config);
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        document.getElementById('menuBtn').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            if (menu.classList.contains('menu-show')) {
+                menu.classList.remove('menu-show');
+                menu.style.opacity = '0';
+                menu.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 300);
+            } else {
+                menu.style.display = 'block';
+                setTimeout(() => {
+                    menu.classList.add('menu-show');
+                    menu.style.opacity = '1';
+                    menu.style.transform = 'translateY(0)';
+                }, 10);
+            }
+        });
+    </script>
+
+    <script>
+        document.getElementById('menuBtn').addEventListener('click', function () {
+            const menu = document.getElementById('menu');
+            if (menu.classList.contains('menu-show')) {
+                menu.classList.remove('menu-show');
+                menu.style.opacity = '0';
+                menu.style.transform = 'translateY(-20px)';
+                setTimeout(() => {
+                    menu.style.display = 'none';
+                }, 300);
+            } else {
+                menu.style.display = 'block';
+                setTimeout(() => {
+                    menu.classList.add('menu-show');
+                    menu.style.opacity = '1';
+                    menu.style.transform = 'translateY(0)';
+                }, 10);
+            }
+        });
+
+        function adjustResponsiveElements() {
+            var elements = document.querySelectorAll('.responsive');
+            elements.forEach(function (element) {
+                element.style.width = window.innerWidth + 'px';
+                element.style.height = window.innerHeight + 'px';
+            });
+        }
+
+        function forceResize() {
+            adjustResponsiveElements();
+            setTimeout(forceResize, 1000); // Adjust elements every second to counter any unresizing issues
+        }
+
+        function detectDeviceType() {
+            const ua = navigator.userAgent;
+            if (/Mobi|Android/i.test(ua)) {
+                document.body.classList.add('mobile');
+            } else {
+                document.body.classList.add('desktop');
+            }
+        }
+
+        function checkAndResize() {
+            var docWidth = document.documentElement.clientWidth;
+            var bodyWidth = document.body.scrollWidth;
+            if (bodyWidth > docWidth) {
+                adjustResponsiveElements();
+            }
+            setTimeout(checkAndResize, 2500); // Check every 2.5 seconds
+        }
+
+        // Log and resize on unresizing issues
+        function monitorResizeIssues() {
+            setInterval(() => {
+                const docWidth = document.documentElement.clientWidth;
+                const bodyWidth = document.body.scrollWidth;
+                if (bodyWidth > docWidth) {
+                    console.error('Unresizing issue detected: bodyWidth > docWidth');
+                    adjustResponsiveElements();
+                }
+            }, 1000);
+        }
+
+        // Adjust elements on page load and resize
+        window.onload = () => {
+            detectDeviceType();
+            forceResize();
+            checkAndResize();
+            monitorResizeIssues();
+        };
+        window.onresize = forceResize;
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Function to check and add text to purchase buttons
+            function ensurePurchaseButtonText() {
+                document.querySelectorAll('.card button').forEach(button => {
+                    if (button.textContent.trim() === '') {
+                        button.classList.add('custom-purchase-btn');
+                    }
+                });
+            }
+
+            // Function to check and add "🛈" icon to info buttons
+            function ensureInfoButtonText() {
+                document.querySelectorAll('.card .info-btn').forEach(button => {
+                    if (!button.textContent.trim()) {
+                        button.innerHTML = '🛈';
+                        button.classList.add('custom-info-btn');
+                    }
+                });
+            }
+
+            // Function to ensure the grainy SVG filter is applied
+            function ensureGrainySVG() {
+                const noiseFilter = document.querySelector('filter#noiseFilter');
+                const noiseFilter2 = document.querySelector('filter#noiseFilter2');
+
+                if (!noiseFilter || !noiseFilter2) {
+                    const svgNS = "http://www.w3.org/2000/svg";
+                    const svg = document.createElementNS(svgNS, "svg");
+                    const filter = document.createElementNS(svgNS, "filter");
+                    filter.setAttribute("id", "noiseFilter");
+                    const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
+                    feTurbulence.setAttribute("type", "fractalNoise");
+                    feTurbulence.setAttribute("baseFrequency", "0.6");
+                    feTurbulence.setAttribute("stitchTiles", "stitch");
+                    filter.appendChild(feTurbulence);
+                    svg.appendChild(filter);
+
+                    const filter2 = document.createElementNS(svgNS, "filter");
+                    filter2.setAttribute("id", "noiseFilter2");
+                    const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
+                    feTurbulence2.setAttribute("type", "fractalNoise");
+                    feTurbulence2.setAttribute("baseFrequency", "0.6");
+                    feTurbulence2.setAttribute("stitchTiles", "stitch");
+                    filter2.appendChild(feTurbulence2);
+                    svg.appendChild(filter2);
+
+                    document.body.appendChild(svg);
+                }
+
+                const grainyOverlay = document.querySelector('.noise-overlay');
+                if (!grainyOverlay) {
+                    const overlay = document.createElement('div');
+                    overlay.classList.add('noise-overlay');
+                    document.body.appendChild(overlay);
+                }
+
+                const styleSheet = document.styleSheets[0];
+                styleSheet.insertRule(`
+                    .noise-overlay {
+                        position: fixed;
+                        top: 0;
+                        left: 0;
+                        width: 100%;
+                        height: 100%;
+                        pointer-events: none;
+                        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
+                        filter: url(#noiseFilter);
+                        opacity: 0.1;
+                        z-index: -1;
+                    }
+                `, styleSheet.cssRules.length);
+            }
+
+            // Run the functions initially
+            ensurePurchaseButtonText();
+            ensureInfoButtonText();
+            ensureGrainySVG();
+
+            // MutationObserver to monitor changes in the DOM and reapply the text/icon
+            const observer = new MutationObserver(function (mutations) {
+                mutations.forEach(mutation => {
+                    if (mutation.type === 'childList') {
+                        ensurePurchaseButtonText();
+                        ensureInfoButtonText();
+                        ensureGrainySVG();
+                    }
+                });
+            });
+
+            // Configuration of the observer
+            const config = { childList: true, subtree: true };
+
+            // Start observing the body for changes
+            observer.observe(document.body, config);
+        });
+    </script>
+
+    <script>
+        document.querySelectorAll('.tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
 
         let packageId;
 
@@ -1104,7 +1473,7 @@
             }, 300);
         }
 
-        document.getElementById('purchaseForm').addEventListener('submit', function(e) {
+        document.getElementById('purchaseForm').addEventListener('submit', function (e) {
             e.preventDefault();
             const username = document.querySelector('input[name="ign"]').value;
             const formAction = `https://store.rivalkitsmc.com/checkout/packages/add/${packageId}?username=${username}`;
@@ -1176,7 +1545,7 @@
 
         function adjustResponsiveElements() {
             var elements = document.querySelectorAll('.responsive');
-            elements.forEach(function(element) {
+            elements.forEach(function (element) {
                 element.style.width = window.innerWidth + 'px';
                 element.style.height = window.innerHeight + 'px';
             });
@@ -1212,209 +1581,6 @@
         };
         window.onresize = forceResize;
     </script>
-
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-      // Function to check and add text to purchase buttons
-      function ensurePurchaseButtonText() {
-          document.querySelectorAll('.card button').forEach(button => {
-              if (button.textContent.trim() === '') {
-                  button.classList.add('custom-purchase-btn');
-              }
-          });
-      }
-
-      // Function to check and add "🛈" icon to info buttons
-      function ensureInfoButtonText() {
-          document.querySelectorAll('.card .info-btn').forEach(button => {
-              if (!button.textContent.trim()) {
-                  button.innerHTML = '🛈';
-                  button.classList.add('custom-info-btn');
-              }
-          });
-      }
-
-      // Function to ensure the grainy SVG filter is applied
-      function ensureGrainySVG() {
-          const noiseFilter = document.querySelector('filter#noiseFilter');
-          const noiseFilter2 = document.querySelector('filter#noiseFilter2');
-
-          if (!noiseFilter || !noiseFilter2) {
-              const svgNS = "http://www.w3.org/2000/svg";
-              const svg = document.createElementNS(svgNS, "svg");
-              const filter = document.createElementNS(svgNS, "filter");
-              filter.setAttribute("id", "noiseFilter");
-              const feTurbulence = document.createElementNS(svgNS, "feTurbulence");
-              feTurbulence.setAttribute("type", "fractalNoise");
-              feTurbulence.setAttribute("baseFrequency", "0.6");
-              feTurbulence.setAttribute("stitchTiles", "stitch");
-              filter.appendChild(feTurbulence);
-              svg.appendChild(filter);
-
-              const filter2 = document.createElementNS(svgNS, "filter");
-              filter2.setAttribute("id", "noiseFilter2");
-              const feTurbulence2 = document.createElementNS(svgNS, "feTurbulence");
-              feTurbulence2.setAttribute("type", "fractalNoise");
-              feTurbulence2.setAttribute("baseFrequency", "0.6");
-              feTurbulence2.setAttribute("stitchTiles", "stitch");
-              filter2.appendChild(feTurbulence2);
-              svg.appendChild(filter2);
-
-              document.body.appendChild(svg);
-          }
-
-          const grainyOverlay = document.querySelector('.noise-overlay');
-          if (!grainyOverlay) {
-              const overlay = document.createElement('div');
-              overlay.classList.add('noise-overlay');
-              document.body.appendChild(overlay);
-          }
-
-          const styleSheet = document.styleSheets[0];
-          styleSheet.insertRule(`
-              .noise-overlay {
-                  position: fixed;
-                  top: 0;
-                  left: 0;
-                  width: 100%;
-                  height: 100%;
-                  pointer-events: none;
-                  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="noiseFilter"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 0.5"/></feComponentTransfer></filter></svg>') no-repeat center center;
-                  filter: url(#noiseFilter);
-                  opacity: 0.1;
-                  z-index: -1;
-              }
-          `, styleSheet.cssRules.length);
-      }
-
-      // Run the functions initially
-      ensurePurchaseButtonText();
-      ensureInfoButtonText();
-      ensureGrainySVG();
-
-      // MutationObserver to monitor changes in the DOM and reapply the text/icon
-      const observer = new MutationObserver(function(mutations) {
-          mutations.forEach(mutation => {
-              if (mutation.type === 'childList') {
-                  ensurePurchaseButtonText();
-                  ensureInfoButtonText();
-                  ensureGrainySVG();
-              }
-          });
-      });
-
-      // Configuration of the observer
-      const config = { childList: true, subtree: true };
-
-      // Start observing the body for changes
-      observer.observe(document.body, config);
-  });
-</script>
-
-<script>
-    document.querySelectorAll('.tab').forEach(tab => {
-        tab.addEventListener('click', () => {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
-            tab.classList.add('active');
-            document.getElementById(tab.dataset.tab).classList.add('active');
-        });
-    });
-
-    document.getElementById('menuBtn').addEventListener('click', function() {
-        const menu = document.getElementById('menu');
-        if (menu.classList.contains('menu-show')) {
-            menu.classList.remove('menu-show');
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateY(-20px)';
-            setTimeout(() => {
-                menu.style.display = 'none';
-            }, 300);
-        } else {
-            menu.style.display = 'block';
-            setTimeout(() => {
-                menu.classList.add('menu-show');
-                menu.style.opacity = '1';
-                menu.style.transform = 'translateY(0)';
-            }, 10);
-        }
-    });
-</script>
-
-<script>
-    document.getElementById('menuBtn').addEventListener('click', function() {
-        const menu = document.getElementById('menu');
-        if (menu.classList.contains('menu-show')) {
-            menu.classList.remove('menu-show');
-            menu.style.opacity = '0';
-            menu.style.transform = 'translateY(-20px)';
-            setTimeout(() => {
-                menu.style.display = 'none';
-            }, 300);
-        } else {
-            menu.style.display = 'block';
-            setTimeout(() => {
-                menu.classList.add('menu-show');
-                menu.style.opacity = '1';
-                menu.style.transform = 'translateY(0)';
-            }, 10);
-        }
-    });
-
-    function adjustResponsiveElements() {
-        var elements = document.querySelectorAll('.responsive');
-        elements.forEach(function(element) {
-            element.style.width = window.innerWidth + 'px';
-            element.style.height = window.innerHeight + 'px';
-        });
-    }
-
-    function forceResize() {
-        adjustResponsiveElements();
-        setTimeout(forceResize, 1000); // Adjust elements every second to counter any unresizing issues
-    }
-
-    function detectDeviceType() {
-        const ua = navigator.userAgent;
-        if (/Mobi|Android/i.test(ua)) {
-            document.body.classList.add('mobile');
-        } else {
-            document.body.classList.add('desktop');
-        }
-    }
-
-    function checkAndResize() {
-        var docWidth = document.documentElement.clientWidth;
-        var bodyWidth = document.body.scrollWidth;
-        if (bodyWidth > docWidth) {
-            adjustResponsiveElements();
-        }
-        setTimeout(checkAndResize, 2500); // Check every 2.5 seconds
-    }
-
-    // Log and resize on unresizing issues
-    function monitorResizeIssues() {
-        setInterval(() => {
-            const docWidth = document.documentElement.clientWidth;
-            const bodyWidth = document.body.scrollWidth;
-            if (bodyWidth > docWidth) {
-                console.error('Unresizing issue detected: bodyWidth > docWidth');
-                adjustResponsiveElements();
-            }
-        }, 1000);
-    }
-
-    // Adjust elements on page load and resize
-    window.onload = () => {
-        detectDeviceType();
-        forceResize();
-        checkAndResize();
-        monitorResizeIssues();
-    };
-    window.onresize = forceResize;
-</script>
-
-    
 </body>
 
 </html>
