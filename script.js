@@ -68,3 +68,33 @@ window.onload = () => {
     monitorResizeIssues();
 };
 window.onresize = forceResize;
+
+document.addEventListener("DOMContentLoaded", function() {
+    // Function to scale elements based on the user's screen size
+    function autoScaleElements() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
+
+        const baseWidth = 1920; // Base width for scaling
+        const baseHeight = 1080; // Base height for scaling
+
+        const widthScale = screenWidth / baseWidth;
+        const heightScale = screenHeight / baseHeight;
+
+        const elements = document.querySelectorAll('.auto-scale');
+
+        elements.forEach(element => {
+            const originalWidth = element.offsetWidth;
+            const originalHeight = element.offsetHeight;
+
+            element.style.width = (originalWidth * widthScale) + 'px';
+            element.style.height = (originalHeight * heightScale) + 'px';
+        });
+    }
+
+    // Initial scaling
+    autoScaleElements();
+
+    // Re-scale elements on window resize
+    window.addEventListener('resize', autoScaleElements);
+});
