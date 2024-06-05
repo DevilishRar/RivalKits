@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css?family=Manrope:700|Manrope:400');
+
+:root {
+    --text: hsl(0, 0%, 99%);
+    --textDim: hsl(0, 0%, 60%);
+    --background: hsl(0, 0%, 7%);
+    --primary: hsl(0, 100%, 50%);
+    --primaryBg: hsla(0, 100%, 50%, 1%);
+    --primaryHi: hsla(0, 100%, 60%, 25%);
+    --primaryFg: hsl(0, 100%, 85%);
+    --secondary: hsl(0, 51%, 14%);
+    --secondaryFg: hsl(0, 51%, 75%);
+    --secondaryBg: hsla(0, 52%, 14%, 0);
+    --secondaryHi: hsla(0, 51%, 30%, 50%);
+    --accent: hsl(0, 100%, 94%);
+    --accentBg: hsla(0, 100%, 94%, 1%);
+    --accentHi: hsla(0, 100%, 100%, 25%);
+}
+
+/* Styles for both desktop and mobile navbars */
+.desktop-navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 20px 10%;
+    background-color: transparent;
+}
+
+.menu {
+    color: var(--textDim);
+    text-decoration: none;
+    margin-left: 1rem;
+    transition: color 0.3s ease;
+}
+
+.menu:hover {
+    color: var(--text);
+}
+
+.mobile-navbar {
+    display: none;
+    background-color: var(--primaryBg);
+    padding: 16px;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+    border-radius: 15px;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    flex-direction: column;
+}
+
+.mobile-navbar button {
+    background-color: var(--primaryBg);
+    box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+    color: var(--primaryFg);
+    border: none;
+    border-radius: 15px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.mobile-navbar button:hover {
+    transform: translateY(5px);
+    box-shadow: 0px 0px 20px var(--primaryHi);
+}
+
+#menu {
+    display: none;
+    background-color: var(--primaryBg);
+    box-shadow: 0px -3px 15px 0px var(--primaryHi) inset;
+    border-radius: 15px;
+    margin-top: 1rem;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    z-index: 10;
+}
+
+#menu a {
+    display: block;
+    padding: 12px 16px;
+    color: var(--primaryFg);
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+#menu a:hover {
+    background-color: var(--secondaryBg);
+}
+
+@media (min-width: 768px) {
+    .mobile-navbar, #menu {
+        display: none;
+    }
+    .desktop-navbar {
+        display: flex;
+    }
+}
+
+@media (max-width: 768px) {
+    .desktop-navbar {
+        display: none;
+    }
+    .mobile-navbar {
+        display: flex;
+    }
+}
+
+.menu-show {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
